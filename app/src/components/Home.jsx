@@ -1,58 +1,48 @@
-import React, { useState } from "react";
+import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { firstImage, secondImage, thirdImage } from "../images/images";
+import CarouselItem from "./Carousel";
 
-export function ControlledCarousel() {
-    const [index, setIndex] = useState(0);
+const images = [
+    {
+        src: firstImage,
+        heading: "Shop with us",
+        name: "Watch",
+        description: "A wide variety of products at your disposal",
+    },
+    {
+        src: secondImage,
+        heading: "Find your joy",
+        name: "Speaker",
+        description: "We sell everything you need",
+    },
+    {
+        src: thirdImage,
+        heading: "New Year's Promotion",
+        name: "Earphone",
+        description: "Browse through our rich catalogues",
+    },
+];
 
-    const handleSelect = (selectedIndex, e) => {
-        setIndex(selectedIndex);
-    };
-
+export const Home = () => {
     return (
-        <Carousel activeIndex={index} onSelect={handleSelect}>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=First slide&bg=373940"
-                    alt="First slide"
-                />
-                <Carousel.Caption>
-                    <h3>First slide label</h3>
-                    <p>
-                        Nulla vitae elit libero, a pharetra augue mollis
-                        interdum.
-                    </p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Second slide&bg=282c34"
-                    alt="Second slide"
-                />
-
-                <Carousel.Caption>
-                    <h3>Second slide label</h3>
-                    <p>
-                        Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-                    </p>
-                </Carousel.Caption>
-            </Carousel.Item>
-            <Carousel.Item>
-                <img
-                    className="d-block w-100"
-                    src="holder.js/800x400?text=Third slide&bg=20232a"
-                    alt="Third slide"
-                />
-
-                <Carousel.Caption>
-                    <h3>Third slide label</h3>
-                    <p>
-                        Praesent commodo cursus magna, vel scelerisque nisl
-                        consectetur.
-                    </p>
-                </Carousel.Caption>
-            </Carousel.Item>
+        <Carousel slide={false}>
+            {images.map((image, _index) => {
+                return (
+                    <Carousel.Item key={new Date() * _index} className="m-0">
+                        <CarouselItem
+                            imgsrc={image.src}
+                            description={image.description}
+                            alt={image.name}
+                            heading={image.heading}
+                        >
+                            <button className="btn btn-primary">
+                                Get Started
+                            </button>
+                        </CarouselItem>
+                    </Carousel.Item>
+                );
+            })}
         </Carousel>
     );
-}
+};

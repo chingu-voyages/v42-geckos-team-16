@@ -12,10 +12,12 @@ const CarouselItem = ({ imgsrc, heading, description, alt, children }) => {
         >
             <img
                 style={{
-                    objectFit: "fill",
+                    objectFit: "cover",
                     objectPosition: "left",
                     display: "block",
                     opacity: "70",
+                    maxWidth: "100%",
+                    minHeight: "45vh",
                 }}
                 src={imgsrc}
                 alt={alt}
@@ -30,10 +32,10 @@ const CarouselItem = ({ imgsrc, heading, description, alt, children }) => {
             >
                 {heading}
             </h3>
-            <p style={{ position: "absolute", top: "63%", left: "12%" }}>
+            <p style={{ position: "absolute", top: "65%", left: "12%" }}>
                 {description}
             </p>
-            <main style={{ position: "absolute", top: "71%", left: "12%" }}>
+            <main style={{ position: "absolute", top: "75%", left: "12%" }}>
                 {children}
             </main>
         </div>

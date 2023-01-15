@@ -1,14 +1,25 @@
-# voyage-tasks
+# E-commerce Website
 
-Your project's `readme` is as important to success as your code. For 
-this reason you should put as much care into its creation and maintenance
-as you would any other component of the application.
+## Overview
 
-If you are unsure of what should go into the `readme` let this article,
-written by an experienced Chingu, be your starting point - 
-[Keys to a well written README](https://tinyurl.com/yk3wubft).
+We are intending to build an e-commerce website that sells a variety of products.
 
-And before we go there's "one more thing"! Once you decide what to include
-in your `readme` feel free to replace the text we've provided here.
+## Features
 
-> Own it & Make it your Own!
+## Running the project
+
+-   Clone the repository: `git clone https://github.com/chingu-voyages/v42-geckos-team-16.git`
+-   Go to the `app` folder: `cd app/`
+-   Switch to `component/home` branch: `git switch component/home`
+-   Install the dependencies: `npm install`
+-   Run the project: `npm start`
+
+## Dependencies
+
+-   bootstrap
+-   react-bootstrap
+-   react
+-   react-dom
+-   react-router-dom
+
+## Ways to contribute

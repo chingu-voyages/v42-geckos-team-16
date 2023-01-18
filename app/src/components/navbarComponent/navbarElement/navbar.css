@@ -1,0 +1,33 @@
+* {
+  box-sizing: border-box;
+}
+
+/* Navebar element Big screen */
+.displayNavbarOnBigScreen {
+  display: none;
+}
+.navbar-container {
+  padding: 20px;
+  margin-bottom: -10px;
+}
+
+.iconsBTN {
+  width: 150px;
+}
+.iconBTN {
+  cursor: pointer;
+}
+.link-color {
+  color: black;
+}
+
+@media (min-width: 768px) {
+  /* heddin the mobile nav bar on big screen  */
+  .hidden {
+    display: none;
+  }
+  /* Display navbar on big screen */
+  .displayNavbarOnBigScreen {
+    display: inline;
+  }
+}

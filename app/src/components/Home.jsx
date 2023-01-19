@@ -2,7 +2,7 @@ import React from "react";
 import Carousel from "react-bootstrap/Carousel";
 import { firstImage, secondImage, thirdImage } from "../images/images";
 import CarouselItem from "./Carousel";
-import Header from "./navbarComponent/Header";
+
 
 const images = [
   {
@@ -28,7 +28,7 @@ const images = [
 export const Home = () => {
   return (
     <div>
-      <Header />
+     
       <Carousel slide={false}>
         {images.map((image, _index) => {
           return (

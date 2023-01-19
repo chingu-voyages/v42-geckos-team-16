@@ -8,3 +8,8 @@ html {
   padding: 0;
   box-sizing: inherit;
 }
+
+.login-bg{
+ background-image: url('./images/login.jpg'); 
+ background-size: cover;
+}

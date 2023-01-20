@@ -1,5 +1,6 @@
 import React from "react";
-import { firstImage } from "../../images/images";
+import { useState } from "react";
+import { firstImage, secondImage } from "../../images/images";
 import { StarFillIcon } from "../Icons/Icon";
 
 const ProductDetails = () => {
@@ -39,19 +40,61 @@ const ProductDetails = () => {
         },
     ];
 
+    const images = [
+        {
+            img: firstImage,
+            alt: "First Image",
+        },
+        {
+            img: secondImage,
+            alt: "Second Image",
+        },
+    ];
+
+    const [image, setImage] = useState(0);
+    const [quantity, setQuantity] = useState(1);
+    const [imgIndex, setImgIndex] = useState(0);
+
     return (
-        <div className="w-75 container-fluid my-5 ">
-            <div className="row d-flex align-items-stretch">
-                <div className="col">
+        <div className="container-fluid col-lg-9 my-2 my-md-5">
+            <div className="row mx-1">
+                <div className="col-md">
                     <img
-                        src={firstImage}
+                        src={images[image]["img"]}
                         alt="First Image"
                         className="img-fluid"
-                        style={{ minHeight: "100%", objectFit: "cover" }}
+                        style={{
+                            minHeight: "400px",
+                            objectFit: "cover",
+                        }}
                     />
+                    <div className="my-4 d-flex d-md-block justify-content-center">
+                        {images.map((img, index) => {
+                            return (
+                                <img
+                                    key={new Date() * index}
+                                    onClick={() => {
+                                        setImage(index);
+                                        setImgIndex(index);
+                                    }}
+                                    className={`img-fluid me-4 ${
+                                        index == imgIndex &&
+                                        "border border-5 border-dark"
+                                    }`}
+                                    style={{
+                                        width: "125px",
+                                        height: "150px",
+                                        objectFit: "cover",
+                                    }}
+                                    src={img.img}
+                                    alt={img.alt}
+                                />
+                            );
+                        })}
+                    </div>
                 </div>
-                <div className="col">
-                    <div className="mx-5">
+                <div className="col-md">
+                    <div className="mx-lg-5">
                         <h2 className="fw-light">
                             Harney & Sons HRP Valentine's Day Tea (30 Sachets)
                         </h2>
@@ -70,7 +113,8 @@ const ProductDetails = () => {
                             type="number"
                             name="quantity"
                             id="quantity"
-                            value={1}
+                            value={quantity}
+                            onChange={(e) => setQuantity(e.target.value)}
                             className="form-control"
                             style={{
                                 width: "75px",
@@ -95,42 +139,48 @@ const ProductDetails = () => {
                             gift
                         </p>
                     </div>
+                    <div className="col hidden d-lg-block">
+                        <p>
+                            <span className="fw-bold">Ingredients:</span> Black
+                            tea, rosebuds, chocolate flavour, vanilla flavour.
+                            Contains natural flavours.
+                        </p>
+                        <table className="table table-bordered align-middle">
+                            <tbody>
+                                {table.map((line, index) => {
+                                    return (
+                                        <tr
+                                            key={new Date() * index}
+                                            className="py-5"
+                                        >
+                                            <td>{line.title}</td>
+                                            <td>{line.content}</td>
+                                        </tr>
+                                    );
+                                })}
+                            </tbody>
+                        </table>
+                    </div>
                 </div>
             </div>
-            <div className="row my-4">
-                <div className="col">
-                    <img
-                        className="img-fluid"
-                        style={{ width: "125px", height: "150px" }}
-                        src={firstImage}
-                        alt="Image"
-                    />
-                    <img
-                        className="img-fluid mx-4"
-                        style={{ width: "125px", height: "150px" }}
-                        src={firstImage}
-                        alt="Image"
-                    />
-                </div>
-                <div className="col">
-                    <p>
-                        <span className="fw-bold">Ingredients:</span> Black tea,
-                        rosebuds, chocolate flavour, vanilla flavour. Contains
-                        natural flavours.
-                    </p>
-                    <table className="table table-bordered align-middle">
-                        <tbody>
-                            {table.map((line) => {
-                                return (
-                                    <tr className="py-5">
-                                        <td>{line.title}</td>
-                                        <td>{line.content}</td>
-                                    </tr>
-                                );
-                            })}
-                        </tbody>
-                    </table>
-                </div>
+            <div className="row mx-3 d-none d-md-block d-lg-none">
+                <p>
+                    <span className="fw-bold">Ingredients:</span> Black tea,
+                    rosebuds, chocolate flavour, vanilla flavour. Contains
+                    natural flavours.
+                </p>
+                <table className="table table-bordered align-middle">
+                    <tbody>
+                        {table.map((line, index) => {
+                            return (
+                                <tr key={new Date() * index} className="py-5">
+                                    <td>{line.title}</td>
+                                    <td>{line.content}</td>
+                                </tr>
+                            );
+                        })}
+                    </tbody>
+                </table>
             </div>
         </div>
     );

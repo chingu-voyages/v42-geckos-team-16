@@ -23,9 +23,9 @@ function NavbarOnBigScreen() {
         },
     ];
 
-    const displayNavItems = navItems.map((el) => {
+    const displayNavItems = navItems.map((el, index) => {
         return (
-            <li className="nav-item ">
+            <li className="nav-item" key={new Date() * index}>
                 <a
                     className="text-dark nav-link active link-color "
                     aria-current="page"
@@ -44,13 +44,13 @@ function NavbarOnBigScreen() {
                     <h1>Premium Team</h1>
                 </div>
                 <div className="d-flex justify-content-between align-items-center iconsBTN">
-                    <i class="ri-book-3-line fs-5 iconBTN"></i>
+                    <i className="ri-book-3-line fs-5 iconBTN"></i>
                     <i className="ri-user-line fs-5 iconBTN"></i>
                     <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
                 </div>
             </div>
             <br />
-            <ul class="nav md justify-content-center">{displayNavItems}</ul>
+            <ul className="nav md justify-content-center">{displayNavItems}</ul>
         </div>
     );
 }

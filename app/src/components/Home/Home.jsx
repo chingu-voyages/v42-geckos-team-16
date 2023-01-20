@@ -44,7 +44,7 @@ export const Home = () => {
                                 heading={image.heading}
                             >
                                 <button
-                                    className="btn btn-primary"
+                                    className="btn btn-dark"
                                     onClick={() => navigate("/login")}
                                 >
                                     Get Started

@@ -1,5 +1,6 @@
 import React from "react";
 import Carousel from "react-bootstrap/Carousel";
+import { useNavigate } from "react-router-dom";
 import { firstImage, secondImage, thirdImage } from "../../images/images";
 import CarouselItem from "../Carousel/Carousel";
 
@@ -25,6 +26,8 @@ const images = [
 ];
 
 export const Home = () => {
+    let navigate = useNavigate();
+
     return (
         <div>
             <Carousel slide={false}>
@@ -40,7 +43,10 @@ export const Home = () => {
                                 alt={image.name}
                                 heading={image.heading}
                             >
-                                <button className="btn btn-primary">
+                                <button
+                                    className="btn btn-primary"
+                                    onClick={() => navigate("/login")}
+                                >
                                     Get Started
                                 </button>
                             </CarouselItem>

@@ -5,7 +5,7 @@ function NavbarSmallScreen() {
     const navItems = [
         {
             name: "Home",
-            pageLink: "#",
+            pageLink: "/",
         },
         {
             name: "Product",

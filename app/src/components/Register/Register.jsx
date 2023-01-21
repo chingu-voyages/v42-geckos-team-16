@@ -6,9 +6,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { BASE_URL } from "../../constants/urls";
 
-export const Login = () => {
+export const Register = () => {
     const goHome = useNavigate();
     let inputFields = [
+        {
+            name: "fullname",
+            type: "text",
+            label: "Full name",
+            placeholder: "Enter your full name",
+        },
         {
             name: "email",
             type: "email",
@@ -23,13 +29,13 @@ export const Login = () => {
         },
     ];
 
-    let [user, setUser] = useState({ email: "", password: "" });
+    let [user, setUser] = useState({ fullname: "", email: "", password: "" });
     let [frontErrors, setFrontErrors] = useState([]);
     let [backErrors, setBackErrors] = useState("");
     let [token, setToken] = useState();
 
-    console.log(user);
-    console.log(frontErrors);
+    //console.log(user);
+    //console.log(frontErrors);
     const handleChange = (e) => {
         let myuser = { ...user, [e.target.name]: e.target.value };
         setUser(myuser);
@@ -39,6 +45,7 @@ export const Login = () => {
     const Joi = require("joi");
     const validateFormDate = () => {
         const schema = Joi.object({
+            fullname: Joi.string(),
             email: Joi.string().email({
                 minDomainSegments: 2,
                 tlds: { allow: ["com", "net"] },
@@ -54,14 +61,16 @@ export const Login = () => {
     //function to validate login user from backend side
     //this data set fixed temporary till we have a better API
     const backValidate = async () => {
-        let response = await axios.post(`${BASE_URL}/auth/login`, {
+        let response = await axios.post(`${BASE_URL}/auth/register`, {
+            name: user.fullname,
             email: user.email,
             password: user.password,
+            role: "client",
         });
         return response;
     };
 
-    const submitLogin = async (e) => {
+    const submitRegister = async (e) => {
         e.preventDefault();
         setFrontErrors([]);
         //frontend side validation
@@ -74,14 +83,14 @@ export const Login = () => {
             //make request to validate user from backend side then set user info and token
 
             const backres = await backValidate();
+            console.log("Raw results", backres);
 
-            if (backres.status == 200) {
+            if (backres.status == 201) {
                 let { data } = backres;
-                console.log(data);
-                setToken(data.token);
-
-                localStorage.setItem("token", data.token);
-                toast.success("Login Success");
+                console.log("Status 201", backres);
+                toast.success("Register Success");
+                //setToken(data.token);
+                //localStorage.setItem("token", data.token);
                 //setUserData();
                 goHome("/home");
             }
@@ -89,10 +98,12 @@ export const Login = () => {
     };
     return (
         <>
-            <div className="login-bg vh-100">
+            <div className="vh-100">
                 <div className="m-5 row justify-content-center ">
                     <div className="col-md-6">
-                        <h1 className="fs-2 fw-bold text-center my-5">Login</h1>
+                        <h1 className="fs-2 fw-bold text-center my-5">
+                            Register
+                        </h1>
                         {frontErrors.map((e, index) => {
                             return (
                                 <div
@@ -105,7 +116,7 @@ export const Login = () => {
                         })}
                         <form
                             className="d-flex flex-column"
-                            onSubmit={submitLogin}
+                            onSubmit={submitRegister}
                         >
                             {inputFields.map((field) => {
                                 return (
@@ -124,16 +135,16 @@ export const Login = () => {
                                 type="submit"
                                 className="btn btn-outline-dark"
                             >
-                                Sign In
+                                Sign Up
                             </button>
                             <p className="text-center my-3">
-                                Don't you have an account ?{" "}
+                                Already have an account ?{" "}
                                 <span>
                                     <Link
                                         className="text-dark fw-bold"
-                                        to="/register"
+                                        to="/login"
                                     >
-                                        Register
+                                        Login
                                     </Link>
                                 </span>
                             </p>

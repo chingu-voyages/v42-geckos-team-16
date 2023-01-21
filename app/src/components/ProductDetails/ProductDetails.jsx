@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { firstImage, secondImage } from "../../images/images";
 import { StarFillIcon } from "../Icons/Icon";
+import StarIcons from "../Icons/StarIcons.jsx/StarIcons";
 import Reviews from "../Reviews/Reviews";
 
 const ProductDetails = () => {
@@ -100,14 +101,7 @@ const ProductDetails = () => {
                             Harney & Sons HRP Valentine's Day Tea (30 Sachets)
                         </h2>
                         <h3 className="fs-5 fw-bold">$24.95</h3>
-                        <div className="d-flex justify-content-start align-items-center">
-                            <StarFillIcon />
-                            <StarFillIcon />
-                            <StarFillIcon />
-                            <StarFillIcon />
-                            <StarFillIcon />
-                            <span className="mx-2">11 reviews</span>
-                        </div>
+                        <StarIcons />
                         <p>Shipping calculated at checkout</p>
                         <p className="mt-5">Quantity</p>
                         <input

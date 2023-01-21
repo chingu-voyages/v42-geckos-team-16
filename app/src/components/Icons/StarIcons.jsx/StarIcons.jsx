@@ -1,14 +1,16 @@
 import React from "react";
-import { StarFillIcon } from "../Icon";
+import { StarFillIcon, StarIcon } from "../Icon";
 
-const StarIcons = () => {
+const StarIcons = ({ className }) => {
     return (
-        <div className="d-flex justify-content-start align-items-center mb-3">
+        <div
+            className={`d-flex justify-content-start align-items-center mb-3 ${className}`}
+        >
             <StarFillIcon />
             <StarFillIcon />
             <StarFillIcon />
             <StarFillIcon />
-            <StarFillIcon />
+            <StarIcon />
             <span className="mx-2">11 reviews</span>
         </div>
     );

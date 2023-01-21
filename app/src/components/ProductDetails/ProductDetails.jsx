@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 import { firstImage, secondImage } from "../../images/images";
 import { StarFillIcon } from "../Icons/Icon";
+import Reviews from "../Reviews/Reviews";
 
 const ProductDetails = () => {
     const table = [
@@ -182,6 +183,7 @@ const ProductDetails = () => {
                     </tbody>
                 </table>
             </div>
+            <Reviews />
         </div>
     );
 };

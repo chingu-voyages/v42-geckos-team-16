@@ -1,0 +1,30 @@
+.btn {
+  border: none;
+}
+
+.font {
+  font-size: 13px;
+  color: gray;
+}
+
+.borderItem {
+  border-top: 0.1px black solid;
+  border-bottom: 0.1px black solid;
+  padding: 10px 0;
+  color: gray;
+}
+
+@media (min-width: 768px) {
+  .font {
+    font-size: 15px;
+  }
+  .borderItem {
+    padding: 15px;
+  }
+}
+
+@media (min-width: 992px) {
+  .font {
+    font-size: 17px;
+  }
+}

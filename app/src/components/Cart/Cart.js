@@ -1,20 +1,34 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { firstImage } from "../../images/images";
 import "./cart.css";
 
 export const Cart = () => {
+  const [user, setUser] = useState([]);
+  const [cartItems, setCartItems] = useState([]);
+
+  useEffect(() => {
+    const getUser = async () => {
+      // get user detailes
+      const respond = await fetch("https://fakestoreapi.com/carts/user/2");
+      const user = await respond.json();
+      console.log(user);
+    };
+
+    getUser();
+  }, []);
+
   const num = 1;
 
   return (
     <div className="p-3 p-md-4 p-lg-5 text-center font">
-      <div className={num && "d-none"}>
+      <div className={"d-none"}>
         <h3>Your cart</h3>
         <p>Your cart is currently empty.</p>
         <button className="btn btn-outline-warning ">
           https://premiumteam.ca/
         </button>
       </div>
-      <div className={!num && "d-none"}>
+      <div>
         <div className="d-flex justify-content-between">
           <p>PRODUCT</p>
           <p>PRICE</p>

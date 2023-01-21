@@ -6,6 +6,7 @@ import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { BASE_URL } from "../../constants/urls";
 
+
 export const Register = () => {
     const goHome = useNavigate();
     let inputFields = [

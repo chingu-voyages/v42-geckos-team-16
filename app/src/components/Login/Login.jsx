@@ -27,8 +27,7 @@ export const Login = () => {
     let [backErrors, setBackErrors] = useState("");
     let [token, setToken] = useState();
 
-    console.log(user);
-    console.log(frontErrors);
+    
     const handleChange = (e) => {
         let myuser = { ...user, [e.target.name]: e.target.value };
         setUser(myuser);

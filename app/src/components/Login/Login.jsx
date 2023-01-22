@@ -8,6 +8,7 @@ import { BASE_URL } from "../../constants/urls";
 
 export const Login = () => {
     const goHome = useNavigate();
+    let [loading,setLoading] = useState(false);
     let inputFields = [
         {
             name: "email",
@@ -54,10 +55,12 @@ export const Login = () => {
     //function to validate login user from backend side
     //this data set fixed temporary till we have a better API
     const backValidate = async () => {
+        setLoading(true);
         let response = await axios.post(`${BASE_URL}/auth/login`, {
             email: user.email,
             password: user.password,
         });
+        setLoading(false);
         return response;
     };
 
@@ -72,9 +75,9 @@ export const Login = () => {
             setFrontErrors(validateRes.error.details);
         } else {
             //make request to validate user from backend side then set user info and token
-
+            
             const backres = await backValidate();
-
+            
             if (backres.status == 200) {
                 let { data } = backres;
                 console.log(data);
@@ -124,7 +127,7 @@ export const Login = () => {
                                 type="submit"
                                 className="btn btn-outline-dark"
                             >
-                                Sign In
+                                {loading?<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>:'Sign In'}
                             </button>
                             <p className="text-center my-3">
                                 Don't you have an account ?{" "}

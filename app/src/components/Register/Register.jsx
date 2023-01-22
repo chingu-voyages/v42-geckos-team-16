@@ -8,7 +8,8 @@ import { BASE_URL } from "../../constants/urls";
 
 
 export const Register = () => {
-    const goHome = useNavigate();
+    const goHome = useNavigate();    
+    let [loading,setLoading] = useState(false);
     let inputFields = [
         {
             name: "fullname",
@@ -62,12 +63,14 @@ export const Register = () => {
     //function to validate login user from backend side
     //this data set fixed temporary till we have a better API
     const backValidate = async () => {
+        setLoading(true);
         let response = await axios.post(`${BASE_URL}/auth/register`, {
             name: user.fullname,
             email: user.email,
             password: user.password,
             role: "client",
         });
+        setLoading(false);
         return response;
     };
 
@@ -132,11 +135,11 @@ export const Register = () => {
                                 );
                             })}
 
-                            <button
+                            <button 
                                 type="submit"
                                 className="btn btn-outline-dark"
                             >
-                                Sign Up
+                                 {loading?<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>:'Sign Up'}
                             </button>
                             <p className="text-center my-3">
                                 Already have an account ?{" "}

@@ -8,7 +8,7 @@ import { BASE_URL } from "../../constants/urls";
 
 export const Login = () => {
     const goHome = useNavigate();
-    let [loading,setLoading] = useState(false);
+    let [loading, setLoading] = useState(false);
     let inputFields = [
         {
             name: "email",
@@ -56,12 +56,31 @@ export const Login = () => {
     //this data set fixed temporary till we have a better API
     const backValidate = async () => {
         setLoading(true);
-        let response = await axios.post('https://fakestoreapi.com/auth/login', {
-            username: "mork_2314",
-            password: "83r5^_"
-        });
+        // try {
+        //     let response = await axios.post('https://fakestoreapi.com/auth/login', {
+        //         username: "mork_2314",
+        //         password: "83r5^_"
+        //     });
+        //     return response;
+        // } catch (err) {
+        //     // Error handling here
+        //     return response.status(401).send(err.message);
+        //  }
+
+         try{
+            let response = await axios.post(`${BASE_URL}/auth/login`, {
+                email: user.email,
+                password: user.password
+            });         
+            console.log(response);
+            return response
+        }catch(error){
+            console.log(Object.keys(error), error.message);
+            setBackErrors(error.message);
+        }
+
         setLoading(false);
-        return response;
+        
     };
 
     const submitLogin = async (e) => {
@@ -75,20 +94,19 @@ export const Login = () => {
             setFrontErrors(validateRes.error.details);
         } else {
             //make request to validate user from backend side then set user info and token
-            
+
             const backres = await backValidate();
-            
+
             if (backres.status == 200) {
                 let { data } = backres;
-                console.log(data);
+
                 setToken(data.token);
 
                 localStorage.setItem("token", data.token);
                 toast.success("Login Success");
-                //setUserData();
                 goHome("/home");
-            }else{
-                console.log(backres.status )
+            } else {
+                console.log(backres)
             }
         }
     };
@@ -108,6 +126,12 @@ export const Login = () => {
                                 </div>
                             );
                         })}
+                        {backErrors?<div
+                                    className="alert alert-danger "
+                                >
+                                    {backErrors}
+                                </div>:''
+                           }
                         <form
                             className="d-flex flex-column"
                             onSubmit={submitLogin}
@@ -129,7 +153,7 @@ export const Login = () => {
                                 type="submit"
                                 className="btn btn-outline-dark"
                             >
-                                {loading?<i className="fa fa-spinner fa-spin" aria-hidden="true"></i>:'Sign In'}
+                                {loading ? <i className="fa fa-spinner fa-spin" aria-hidden="true"></i> : 'Sign In'}
                             </button>
                             <p className="text-center my-3">
                                 Don't you have an account ?{" "}

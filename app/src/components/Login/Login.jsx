@@ -56,9 +56,9 @@ export const Login = () => {
     //this data set fixed temporary till we have a better API
     const backValidate = async () => {
         setLoading(true);
-        let response = await axios.post(`${BASE_URL}/auth/login`, {
-            email: user.email,
-            password: user.password,
+        let response = await axios.post('https://fakestoreapi.com/auth/login', {
+            username: "mork_2314",
+            password: "83r5^_"
         });
         setLoading(false);
         return response;
@@ -87,6 +87,8 @@ export const Login = () => {
                 toast.success("Login Success");
                 //setUserData();
                 goHome("/home");
+            }else{
+                console.log(backres.status )
             }
         }
     };
@@ -127,7 +129,7 @@ export const Login = () => {
                                 type="submit"
                                 className="btn btn-outline-dark"
                             >
-                                {loading?<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>:'Sign In'}
+                                {loading?<i className="fa fa-spinner fa-spin" aria-hidden="true"></i>:'Sign In'}
                             </button>
                             <p className="text-center my-3">
                                 Don't you have an account ?{" "}

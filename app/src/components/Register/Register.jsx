@@ -139,7 +139,7 @@ export const Register = () => {
                                 type="submit"
                                 className="btn btn-outline-dark"
                             >
-                                 {loading?<i class="fa fa-spinner fa-spin" aria-hidden="true"></i>:'Sign Up'}
+                                 {loading?<i className="fa fa-spinner fa-spin" aria-hidden="true"></i>:'Sign Up'}
                             </button>
                             <p className="text-center my-3">
                                 Already have an account ?{" "}

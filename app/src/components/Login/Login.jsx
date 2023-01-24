@@ -113,7 +113,7 @@ export const Login = () => {
     return (
         <>
             <div className="login-bg vh-100">
-                <div className="m-5 row justify-content-center ">
+                <div className="mx-3 row justify-content-center ">
                     <div className="col-md-6">
                         <h1 className="fs-2 fw-bold text-center my-5">Login</h1>
                         {frontErrors.map((e, index) => {

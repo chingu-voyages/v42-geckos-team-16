@@ -8,7 +8,7 @@ import { BASE_URL } from "../../constants/urls";
 
 
 export const Register = () => {
-    const goHome = useNavigate();    
+    const goLoginPage = useNavigate();    
     let [loading,setLoading] = useState(false);
     let inputFields = [
         {
@@ -86,18 +86,25 @@ export const Register = () => {
         } else {
             //make request to validate user from backend side then set user info and token
 
-            const backres = await backValidate();
-            console.log("Raw results", backres);
+            try{
+                const backres = await backValidate();
+                console.log("Raw results", backres);
 
-            if (backres.status == 201) {
-                let { data } = backres;
-                console.log("Status 201", backres);
-                toast.success("Register Success");
-                //setToken(data.token);
-                //localStorage.setItem("token", data.token);
-                //setUserData();
-                goHome("/home");
-            }
+                if (backres.status == 201) {
+                    let { data } = backres;
+                    console.log("Status 201", backres);
+                    toast.success("Register Success");
+                    //setToken(data.token);
+                    //localStorage.setItem("token", data.token);
+                    //setUserData();
+                    goLoginPage("/login");
+                }
+                }catch(error){
+                    console.log(Object.keys(error), error.message);
+                    setBackErrors(error.message);
+                    setLoading(false);
+                }
+            
         }
     };
     return (
@@ -118,6 +125,7 @@ export const Register = () => {
                                 </div>
                             );
                         })}
+                        {backErrors?<div className="alert alert-danger">{backErrors}</div>:''}
                         <form
                             className="d-flex flex-column"
                             onSubmit={submitRegister}

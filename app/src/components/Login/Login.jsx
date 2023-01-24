@@ -56,30 +56,12 @@ export const Login = () => {
     //this data set fixed temporary till we have a better API
     const backValidate = async () => {
         setLoading(true);
-        // try {
-        //     let response = await axios.post('https://fakestoreapi.com/auth/login', {
-        //         username: "mork_2314",
-        //         password: "83r5^_"
-        //     });
-        //     return response;
-        // } catch (err) {
-        //     // Error handling here
-        //     return response.status(401).send(err.message);
-        //  }
-
-         try{
-            let response = await axios.post(`${BASE_URL}/auth/login`, {
-                email: user.email,
-                password: user.password
-            });         
-            console.log(response);
-            return response
-        }catch(error){
-            console.log(Object.keys(error), error.message);
-            setBackErrors(error.message);
-        }
-
+        let response = await axios.post(`${BASE_URL}/auth/login`, {
+            email: user.email,
+            password: user.password
+        }); 
         setLoading(false);
+        return response;
         
     };
 
@@ -95,19 +77,24 @@ export const Login = () => {
         } else {
             //make request to validate user from backend side then set user info and token
 
-            const backres = await backValidate();
-
-            if (backres.status == 200) {
-                let { data } = backres;
-
-                setToken(data.token);
-
-                localStorage.setItem("token", data.token);
-                toast.success("Login Success");
-                goHome("/home");
-            } else {
-                console.log(backres)
-            }
+            
+            try{
+                const backres = await backValidate();
+                if (backres.status == 200) {
+                    let { data } = backres;
+    
+                    setToken(data.token);
+    
+                    localStorage.setItem("token", data.token);
+                    toast.success("Login Success");
+                    goHome("/home");
+                }
+                }catch(error){
+                    console.log(Object.keys(error), error.response.data.msg);
+                    setBackErrors(error.response.data.msg);
+                    setLoading(false);
+                }
+             
         }
     };
     return (

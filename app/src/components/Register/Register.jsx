@@ -100,8 +100,8 @@ export const Register = () => {
                     goLoginPage("/login");
                 }
                 }catch(error){
-                    console.log(Object.keys(error), error.message);
-                    setBackErrors(error.message);
+                    console.log(Object.keys(error), error.response.data.msg);
+                    setBackErrors(error.response.data.msg);
                     setLoading(false);
                 }
             

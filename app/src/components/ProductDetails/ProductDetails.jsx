@@ -1,5 +1,7 @@
 import React from "react";
+import { useEffect } from "react";
 import { useState } from "react";
+import { useParams } from "react-router-dom";
 import { firstImage, secondImage } from "../../images/images";
 import { StarFillIcon } from "../Icons/Icon";
 import StarIcons from "../Icons/StarIcons.jsx/StarIcons";
@@ -56,6 +58,18 @@ const ProductDetails = () => {
     const [image, setImage] = useState(0);
     const [quantity, setQuantity] = useState(1);
     const [imgIndex, setImgIndex] = useState(0);
+
+    const { id } = useParams();
+
+    const fetchProduct = async () => {
+        const response = await fetch(`https://fakestoreapi.com/products/${id}`);
+        const product = await response.json();
+        console.log(product);
+    };
+
+    useEffect(() => {
+        fetchProduct();
+    }, []);
 
     return (
         <div className="container-fluid col-lg-9 my-2 my-md-5">

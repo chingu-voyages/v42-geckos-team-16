@@ -10,8 +10,8 @@ function NavbarOnBigScreen() {
             pageLink: "/",
         },
         {
-            name: "Product",
-            pageLink: "#",
+            name: "Products",
+            pageLink: "/products",
         },
         {
             name: "About Us",

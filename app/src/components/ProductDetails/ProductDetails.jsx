@@ -116,27 +116,53 @@ const ProductDetails = () => {
                 <div className="col-md">
                     <div className="mx-lg-5">
                         <h2 className="fw-light">{product["title"]}</h2>
-                        <h3 className="fs-5 fw-bold">${product["price"]}</h3>
-                        <StarIcons rate={product && product.rating?.rate} />
+                        <div className="d-flex flex-column justify-content-lg-between flex-lg-row">
+                            <h3 className="fs-5 fw-bold">
+                                ${product["price"]}
+                            </h3>
+                            <StarIcons rate={product && product.rating?.rate} />
+                        </div>
                         {/* <p>Shipping calculated at checkout</p> */}
                         <h3 className="fs-5 text-primary">
                             {product["category"] &&
                                 formatString(product["category"])}
                         </h3>
                         <p className="mt-5">Quantity</p>
-                        <input
-                            type="number"
-                            name="quantity"
-                            id="quantity"
-                            value={quantity}
-                            onChange={(e) => setQuantity(e.target.value)}
-                            className="form-control"
-                            style={{
-                                width: "75px",
-                                height: "50px",
-                                textAlign: "center",
-                            }}
-                        />
+
+                        <div className="d-flex flex-md-row justify-content-md-center align-items-center">
+                            <button
+                                onClick={() => {
+                                    if (quantity <= 1) {
+                                        setQuantity(0);
+                                        return;
+                                    }
+                                    setQuantity((qty) => qty - 1);
+                                }}
+                                className="btn btn-outline-dark py-2 px-5 me-3"
+                            >
+                                -
+                            </button>
+                            <input
+                                type="number"
+                                name="quantity"
+                                id="quantity"
+                                value={quantity}
+                                onChange={(e) => setQuantity(e.target.value)}
+                                className="form-control"
+                                style={{
+                                    maxWidth: "110px",
+                                    height: "50px",
+                                    textAlign: "center",
+                                }}
+                            />
+                            <button
+                                onClick={() => setQuantity((qty) => qty + 1)}
+                                className="btn btn-outline-dark py-2 px-5 ms-3"
+                            >
+                                +
+                            </button>
+                        </div>
+
                         <button className="btn btn-dark my-4 py-2 w-100">
                             Add to cart
                         </button>

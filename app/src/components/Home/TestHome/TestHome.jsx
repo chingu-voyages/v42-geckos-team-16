@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
+import Skeleton from "react-loading-skeleton";
 import { useNavigate } from "react-router-dom";
 import { firstImage, secondImage, thirdImage } from "../../../images/images";
 import CarouselItem from "../../Carousel/Carousel";
+import { ShowProducts } from "../../Products/ShowProducts";
 import "./TestHome.css";
 
 function CarouselContainer({ children }) {
@@ -76,6 +78,7 @@ function CarouselElement({ children }) {
 
 function TestHome() {
     const navigate = useNavigate();
+    const [products, setProducts] = useState([]);
 
     const images = [
         {
@@ -98,28 +101,60 @@ function TestHome() {
         },
     ];
 
+    useEffect(() => {
+        const getProducts = async () => {
+            const response = await fetch(
+                "https://fakestoreapi.com/products?limit=8"
+            );
+            const data = await response.json();
+            setProducts(data);
+        };
+
+        getProducts();
+    }, []);
+
     return (
-        <CarouselContainer>
-            {images.map((image, _index) => {
-                return (
-                    <CarouselElement key={new Date() * _index} className="m-0">
-                        <CarouselItem
-                            imgsrc={image.src}
-                            description={image.description}
-                            alt={image.name}
-                            heading={image.heading}
+        <>
+            <CarouselContainer>
+                {images.map((image, _index) => {
+                    return (
+                        <CarouselElement
+                            key={new Date() * _index}
+                            className="m-0"
                         >
-                            <button
-                                className="btn btn-dark"
-                                onClick={() => navigate("/login")}
+                            <CarouselItem
+                                imgsrc={image.src}
+                                description={image.description}
+                                alt={image.name}
+                                heading={image.heading}
                             >
-                                Get Started
-                            </button>
-                        </CarouselItem>
-                    </CarouselElement>
-                );
-            })}
-        </CarouselContainer>
+                                <button
+                                    className="btn btn-dark"
+                                    onClick={() => navigate("/login")}
+                                >
+                                    Get Started
+                                </button>
+                            </CarouselItem>
+                        </CarouselElement>
+                    );
+                })}
+            </CarouselContainer>
+            <div className="py-5 mx-auto container">
+                <h2 className="text-center mb-5">Featured Products</h2>
+                {products ? (
+                    <div className="row justify-content-center">
+                        <ShowProducts products={products} />
+                    </div>
+                ) : (
+                    <div className="d-flex flex-lg-row justify-content-lg-between align-items-lg-center">
+                        <Skeleton width={320} animation="wave" />
+                        <Skeleton width={320} animation="wave" />
+                        <Skeleton width={320} animation="wave" />
+                        <Skeleton width={320} animation="wave" />
+                    </div>
+                )}
+            </div>
+        </>
     );
 }
 

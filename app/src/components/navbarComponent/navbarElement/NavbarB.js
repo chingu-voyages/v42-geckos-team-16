@@ -21,6 +21,11 @@ function NavbarOnBigScreen() {
             name: "Contact Us",
             pageLink: "#",
         },
+        {
+            name: "Add products",
+            pageLink: "/add_products",            
+
+        },
     ];
 
     const displayNavItems = navItems.map((el, index) => {

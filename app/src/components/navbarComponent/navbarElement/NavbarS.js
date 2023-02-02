@@ -19,6 +19,11 @@ function NavbarSmallScreen() {
             name: "Contact Us",
             pageLink: "#",
         },
+        {
+            name: "Add products",
+            pageLink: "/add_products",            
+
+        },
     ];
 
     const navItemsDesplay = navItems.map((el, index) => {

@@ -8,12 +8,13 @@ import { Register } from "./components/Register/Register";
 import { Products } from "./components/Products/Products";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Cart } from "./components/Cart/Cart";
+import AboutUs from "./components/AboutUs/AboutUs";
 
 function App() {
   return (
     <>
       <Header />
-      
+
       <Router>
         <Toaster />
         <Routes>
@@ -21,6 +22,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />
           <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<AboutUs />} />
           <Route path="/products" element={<Products />} />
           <Route path="/products/:id" element={<ProductDetails />} />
           <Route path="/order" element={<Cart />} />

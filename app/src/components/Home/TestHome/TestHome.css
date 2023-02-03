@@ -1,0 +1,120 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: inherit;
+}
+
+.carousel-container {
+    width: 100vw;
+    height: 75vh;
+    display: flex;
+    flex-direction: row;
+    justify-content: start;
+    align-items: stretch;
+    overflow: hidden;
+    position: relative;
+}
+
+.carousel__item {
+    width: 100%;
+    height: 100%;
+    position: relative;
+    z-index: 50;
+}
+
+.carousel__controls {
+    position: absolute;
+    z-index: 100;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height: 30px;
+    bottom: 10px;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: black;
+    padding: 0rem 1rem;
+    opacity: 0.5;
+}
+
+.carousel__controls .prev-btn,
+.carousel__controls .next-btn {
+    color: white;
+    border: none;
+    background-color: black;
+    font-size: small;
+}
+
+.carousel__controls .controls-btn {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    gap: 0.75rem;
+    padding: 0.75rem 1rem;
+}
+
+.carousel__controls .controls-btn .dot-btn {
+    border: none;
+    border-radius: 50%;
+    width: 10px;
+    height: 10px;
+    background-color: #bbb;
+}
+
+.active-element,
+.carousel__controls .controls-btn .dot-btn:hover {
+    background-color: white;
+}
+
+@media screen and (max-width: 992px) {
+    .carousel-container {
+        height: 50vh;
+        position: relative;
+    }
+
+    .carousel__controls {
+        position: absolute;
+        bottom: 10px;
+        opacity: 0.5;
+    }
+}
+
+@media screen and (max-width: 596px) {
+    .carousel-container {
+        height: 35vh;
+        position: relative;
+    }
+
+    .carousel__controls {
+        width: 85vw;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        position: absolute;
+        bottom: 10px;
+        opacity: 1;
+        background-color: white;
+        box-shadow: 0px 5px 5px rgb(153, 153, 153);
+    }
+
+    .carousel__controls .controls-btn {
+        padding: 1rem;
+    }
+
+    .active-element,
+    .carousel__controls .controls-btn .dot-btn:hover {
+        background-color: black;
+    }
+
+    .carousel__controls .prev-btn,
+    .carousel__controls .next-btn {
+        color: black;
+        background-color: white;
+        border: none;
+    }
+}

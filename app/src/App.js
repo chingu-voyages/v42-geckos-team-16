@@ -9,7 +9,7 @@ import { Products } from "./components/Products/Products";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Cart } from "./components/Cart/Cart";
 import AboutUs from "./components/AboutUs/AboutUs";
-import TestHome from "./components/TestHome/TestHome";
+import TestHome from "./components/Home/TestHome/TestHome";
 
 function App() {
   return (

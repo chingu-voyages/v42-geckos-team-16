@@ -1,43 +1,14 @@
 import React from "react";
+import "./Carousel.css";
 
 const CarouselItem = ({ imgsrc, heading, description, alt, children }) => {
     return (
-        <div
-            style={{
-                position: "relative",
-                maxHeight: "75vh",
-                minWidth: "100vw",
-            }}
-            className="text-white h-50-sm"
-        >
-            <img
-                style={{
-                    objectFit: "cover",
-                    objectPosition: "left",
-                    display: "block",
-                    opacity: "70",
-                    maxWidth: "100%",
-                    minHeight: "45vh",
-                }}
-                src={imgsrc}
-                alt={alt}
-            />
-            <h3
-                style={{
-                    position: "absolute",
-                    top: "55%",
-                    left: "12%",
-                    textTransform: "uppercase",
-                }}
-            >
-                {heading}
-            </h3>
-            <p style={{ position: "absolute", top: "65%", left: "12%" }}>
-                {description}
-            </p>
-            <main style={{ position: "absolute", top: "75%", left: "12%" }}>
-                {children}
-            </main>
+        <div className="carousel__item-container text-white">
+            <img className="carousel__image" src={imgsrc} alt={alt} />
+            <div className="carousel__image-overlay"></div>
+            <h3 className="carousel__heading">{heading}</h3>
+            <p className="carousel__paragraph">{description}</p>
+            <main className="carousel__btn">{children}</main>
         </div>
     );
 };

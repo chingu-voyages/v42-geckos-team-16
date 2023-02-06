@@ -8,28 +8,30 @@ import { Register } from "./components/Register/Register";
 import { Products } from "./components/Products/Products";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Cart } from "./components/Cart/Cart";
+import AboutUs from "./components/AboutUs/AboutUs";
 import TestHome from "./components/Home/TestHome/TestHome";
 
 function App() {
-    return (
-        <>
-            <Header />
+  return (
+    <>
+      <Header />
 
-            <Router>
-                <Toaster />
-                <Routes>
-                    <Route path="/" element={<TestHome />} />
-                    <Route path="/home" element={<Home />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/products" element={<Products />} />
-                    <Route path="/products/:id" element={<ProductDetails />} />
-                    <Route path="/order" element={<Cart />} />
-                    <Route path="*" element={<NotFound />}></Route>
-                </Routes>
-            </Router>
-        </>
-    );
+      <Router>
+        <Toaster />
+        <Routes>
+          <Route path="/" element={<TestHome />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
+          <Route path="/order" element={<Cart />} />
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </Router>
+    </>
+  );
 }
 
 export default App;

@@ -1,32 +1,34 @@
 import "./navbar.css";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
 // Navbar on Big Screen
 
 import React from "react";
 
 function NavbarOnBigScreen() {
-    const navItems = [
-        {
-            name: "Home",
-            pageLink: "/",
-        },
-        {
-            name: "Products",
-            pageLink: "/products",
-        },
-        {
-            name: "About Us",
-            pageLink: "#",
-        },
-        {
-            name: "Contact Us",
-            pageLink: "#",
-        },
-        {
-            name: "Add products",
-            pageLink: "/add_products",            
+  const navItems = [
+    {
+      name: "Home",
+      pageLink: "/",
+    },
+    {
+      name: "Products",
+      pageLink: "/products",
+    },
+    {
+      name: "About Us",
+      pageLink: "#",
+    },
+    {
+      name: "Contact Us",
+      pageLink: "#",
+    },
+    {
+      name: "Add products",
+      pageLink: "/add_products",
 
-        },
-    ];
+    },
+  ];
 
   const displayNavItems = navItems.map((el, index) => {
     return (
@@ -50,7 +52,18 @@ function NavbarOnBigScreen() {
         </div>
         <div className="d-flex justify-content-between align-items-center iconsBTN">
           <i className="ri-book-3-line fs-5 iconBTN"></i>
-          <i className="ri-user-line fs-5 iconBTN"></i>
+          {/* TODO add likn to user information */}
+          <Popup
+            trigger={open => (
+              <i className="ri-user-line fs-5 iconBTN">
+              </i>
+            )}
+            //     position="bottom center"
+            closeOnDocumentClick
+          >
+            <span> Popup content </span>
+          </Popup>
+
           <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
         </div>
       </div>

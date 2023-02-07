@@ -1,25 +1,30 @@
 import "./navbar.css";
 // navbar on small screen
 function NavbarSmallScreen() {
-  // nav Items
-  const navItems = [
-    {
-      name: "Home",
-      pageLink: "/",
-    },
-    {
-      name: "Products",
-      pageLink: "/products",
-    },
-    {
-      name: "About Us",
-      pageLink: "/about",
-    },
-    {
-      name: "Contact Us",
-      pageLink: "#",
-    },
-  ];
+    // nav Items
+    const navItems = [
+        {
+            name: "Home",
+            pageLink: "/",
+        },
+        {
+            name: "Products",
+            pageLink: "/products",
+        },
+        {
+            name: "About Us",
+            pageLink: "#",
+        },
+        {
+            name: "Contact Us",
+            pageLink: "#",
+        },
+        {
+            name: "Add products",
+            pageLink: "/add_products",            
+
+        },
+    ];
 
   const navItemsDesplay = navItems.map((el, index) => {
     return (

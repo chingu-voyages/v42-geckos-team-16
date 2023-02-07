@@ -4,24 +4,29 @@ import "./navbar.css";
 import React from "react";
 
 function NavbarOnBigScreen() {
-  const navItems = [
-    {
-      name: "Home",
-      pageLink: "/",
-    },
-    {
-      name: "Products",
-      pageLink: "/products",
-    },
-    {
-      name: "About Us",
-      pageLink: "/about",
-    },
-    {
-      name: "Contact Us",
-      pageLink: "#",
-    },
-  ];
+    const navItems = [
+        {
+            name: "Home",
+            pageLink: "/",
+        },
+        {
+            name: "Products",
+            pageLink: "/products",
+        },
+        {
+            name: "About Us",
+            pageLink: "#",
+        },
+        {
+            name: "Contact Us",
+            pageLink: "#",
+        },
+        {
+            name: "Add products",
+            pageLink: "/add_products",            
+
+        },
+    ];
 
   const displayNavItems = navItems.map((el, index) => {
     return (

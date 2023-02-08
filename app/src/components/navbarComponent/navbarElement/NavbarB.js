@@ -48,7 +48,7 @@ function NavbarOnBigScreen() {
   const [data, setData] = useState([""])
   useEffect(() => {
     const fetchUserInfo = async () => {
-      const data = await axios.get("https://store-api-81pb.onrender.com/api/v1/users");
+      const data = await axios.get(`${BASE_URL}/users`);
       setData(data.data);
       console.log(data.data);
     };

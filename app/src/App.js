@@ -11,7 +11,6 @@ import { Cart } from "./components/Cart/Cart";
 import AddProductPage from "./components/AddProductPage/AddProductPage";
 import AboutUs from "./components/AboutUs/AboutUs";
 import TestHome from "./components/Home/TestHome/TestHome";
-import User_info from "./components/User_info/User_info"
 
 function App() {
   return (

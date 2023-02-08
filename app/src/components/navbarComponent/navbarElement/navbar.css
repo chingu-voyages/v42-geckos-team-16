@@ -1,33 +1,37 @@
 * {
-  box-sizing: border-box;
+    box-sizing: border-box;
 }
 
 /* Navebar element Big screen */
 .displayNavbarOnBigScreen {
-  display: none;
+    display: none;
 }
 .navbar-container {
-  padding: 20px;
-  margin-bottom: -10px;
+    padding: 20px;
+    margin-bottom: -10px;
 }
 
 .iconsBTN {
-  width: 150px;
+    width: 150px;
 }
 .iconBTN {
-  cursor: pointer;
+    cursor: pointer;
 }
 .link-color {
-  color: black;
+    color: black;
 }
-
+.btn__icon {
+    text-decoration: none;
+    border: none;
+    background-color: transparent;
+}
 @media (min-width: 768px) {
-  /* heddin the mobile nav bar on big screen  */
-  .hidden {
-    display: none;
-  }
-  /* Display navbar on big screen */
-  .displayNavbarOnBigScreen {
-    display: inline;
-  }
+    /* heddin the mobile nav bar on big screen  */
+    .hidden {
+        display: none;
+    }
+    /* Display navbar on big screen */
+    .displayNavbarOnBigScreen {
+        display: inline;
+    }
 }

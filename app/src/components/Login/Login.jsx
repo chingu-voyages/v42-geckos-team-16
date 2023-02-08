@@ -5,10 +5,14 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { BASE_URL } from "../../constants/urls";
+import { useCookies } from "react-cookie";
 
 export const Login = () => {
     const goHome = useNavigate();
     let [loading, setLoading] = useState(false);
+    const [loginAsAdmin, setLoginAsAdmin] = useState(false);
+    const [cookies, setCookie] = useCookies(["role"]);
+
     let inputFields = [
         {
             name: "email",
@@ -56,31 +60,12 @@ export const Login = () => {
     //this data set fixed temporary till we have a better API
     const backValidate = async () => {
         setLoading(true);
-        // try {
-        //     let response = await axios.post('https://fakestoreapi.com/auth/login', {
-        //         username: "mork_2314",
-        //         password: "83r5^_"
-        //     });
-        //     return response;
-        // } catch (err) {
-        //     // Error handling here
-        //     return response.status(401).send(err.message);
-        //  }
-
-         try{
-            let response = await axios.post(`${BASE_URL}/auth/login`, {
-                email: user.email,
-                password: user.password
-            });         
-            console.log(response);
-            return response
-        }catch(error){
-            console.log(Object.keys(error), error.message);
-            setBackErrors(error.message);
-        }
-
+        let response = await axios.post(`${BASE_URL}/auth/login`, {
+            email: user.email,
+            password: user.password,
+        });
         setLoading(false);
-        
+        return response;
     };
 
     const submitLogin = async (e) => {
@@ -95,25 +80,34 @@ export const Login = () => {
         } else {
             //make request to validate user from backend side then set user info and token
 
-            const backres = await backValidate();
+            try {
+                const backres = await backValidate();
+                if (backres.status == 200) {
+                    let { data } = backres;
 
-            if (backres.status == 200) {
-                let { data } = backres;
+                    setToken(data.token);
+                    //setRole(data.user.role);
 
-                setToken(data.token);
+                    data.user.role === "admin" &&
+                        setCookie("role", "admin", { path: "/" });
 
-                localStorage.setItem("token", data.token);
-                toast.success("Login Success");
-                goHome("/home");
-            } else {
-                console.log(backres)
+                    console.log("data user role", data.user.role);
+
+                    localStorage.setItem("token", data.token);
+                    toast.success("Login Success");
+                    goHome("/home");
+                }
+            } catch (error) {
+                console.log(Object.keys(error), error.response.data.msg);
+                setBackErrors(error.response.data.msg);
+                setLoading(false);
             }
         }
     };
     return (
         <>
             <div className="login-bg vh-100">
-                <div className="m-5 row justify-content-center ">
+                <div className="mx-3 row justify-content-center ">
                     <div className="col-md-6">
                         <h1 className="fs-2 fw-bold text-center my-5">Login</h1>
                         {frontErrors.map((e, index) => {
@@ -126,12 +120,13 @@ export const Login = () => {
                                 </div>
                             );
                         })}
-                        {backErrors?<div
-                                    className="alert alert-danger "
-                                >
-                                    {backErrors}
-                                </div>:''
-                           }
+                        {backErrors ? (
+                            <div className="alert alert-danger ">
+                                {backErrors}
+                            </div>
+                        ) : (
+                            ""
+                        )}
                         <form
                             className="d-flex flex-column"
                             onSubmit={submitLogin}
@@ -149,11 +144,33 @@ export const Login = () => {
                                 );
                             })}
 
+                            {/*  <label htmlFor="admin">
+                                <input
+                                    id="admin"
+                                    className="mb-3 me-auto"
+                                    type="checkbox"
+                                    name="admin"
+                                    value="admin"
+                                    onChange={() => {
+                                        setLoginAsAdmin((prev) => !prev);
+                                    }}
+                                    checked={loginAsAdmin}
+                                />
+                                <span className="ms-3">Login as an admin</span>
+                            </label> */}
+
                             <button
                                 type="submit"
                                 className="btn btn-outline-dark"
                             >
-                                {loading ? <i className="fa fa-spinner fa-spin" aria-hidden="true"></i> : 'Sign In'}
+                                {loading ? (
+                                    <i
+                                        className="fa fa-spinner fa-spin"
+                                        aria-hidden="true"
+                                    ></i>
+                                ) : (
+                                    "Sign In"
+                                )}
                             </button>
                             <p className="text-center my-3">
                                 Don't you have an account ?{" "}

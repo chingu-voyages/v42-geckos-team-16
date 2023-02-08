@@ -8,16 +8,20 @@ function NavbarSmallScreen() {
             pageLink: "/",
         },
         {
-            name: "Product",
-            pageLink: "#",
+            name: "Products",
+            pageLink: "/products",
         },
         {
             name: "About Us",
-            pageLink: "#",
+            pageLink: "about",
         },
         {
             name: "Contact Us",
             pageLink: "#",
+        },
+        {
+            name: "Add products",
+            pageLink: "/admin",
         },
     ];
 
@@ -38,7 +42,7 @@ function NavbarSmallScreen() {
     return (
         <nav className="navbar navbar-expand-md">
             <div className="container-fluid d-flex justify-content-between align-items-center">
-                <a className="navbar-brand" href="#">
+                <a className="navbar-brand" href="/">
                     <h3>Premium Team</h3>
                 </a>
                 <div className="d-flex justify-content-between align-items-center w-25 max-width">

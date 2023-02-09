@@ -62,7 +62,9 @@ function NavbarOnBigScreen() {
           <h1>Premium Team</h1>
         </div>
         <div className="d-flex justify-content-between align-items-center iconsBTN">
-          <i className="ri-book-3-line fs-5 iconBTN"></i>
+           <a href="#" className="text-decoration-none text-dark">
+            <i className="ri-book-3-line fs-5 iconBTN"></i>
+          </a>
           <Popup
             trigger={open => (
               <i className="ri-user-line fs-5 iconBTN">
@@ -74,7 +76,9 @@ function NavbarOnBigScreen() {
               <p>Status: {data.status}</p>
             </span>
           </Popup>
-          <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+           <a href="/order" className="text-decoration-none text-dark">
+            <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+          </a>
         </div>
       </div>
       <br />

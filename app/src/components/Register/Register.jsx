@@ -82,8 +82,6 @@ export const Register = () => {
         e.preventDefault();
         setFrontErrors([]);
 
-        registerAsAdmin && setCookie("role", "admin", { path: "/" });
-
         //frontend side validation
         const validateRes = validateFormDate();
 
@@ -101,6 +99,8 @@ export const Register = () => {
                     let { data } = backres;
                     console.log("Status 201", backres);
                     toast.success("Register Success");
+                    registerAsAdmin &&
+                        setCookie("role", "admin", { path: "/" });
                     //setToken(data.token);
                     //localStorage.setItem("token", data.token);
                     //setUserData();

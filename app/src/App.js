@@ -10,9 +10,9 @@ import { Cart } from "./components/Cart/Cart";
 import Admin from "./components/Admin/Admin";
 import AboutUs from "./components/AboutUs/AboutUs";
 import TestHome from "./components/Home/TestHome/TestHome";
-
+import Home from "./components/Home/Home";
+import AddProductPage from "./components/AddProductPage/AddProductPage";
 function App() {
-
   return (
     <>
       <Header />
@@ -34,7 +34,6 @@ function App() {
       </Router>
     </>
   );
-
 }
 
 export default App;

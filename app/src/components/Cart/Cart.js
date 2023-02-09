@@ -13,9 +13,11 @@ export const Cart = () => {
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };
+
     const getOrder = async () => {
       const { data } = await axios.get(`${BASE_URL}/orders/`, config);
       const res = data.data;
+      console.log(res);
       localStorage.setItem("count", res.length);
       await res.map(async (result) => {
         const prod = await fetch(

@@ -44,13 +44,9 @@ function NavbarOnBigScreen() {
       </li>
     );
   });
-  const [user, setUser] = useState({});
 
-  useEffect(() => {
-    const userLogged = localStorage.getItem("user");
-    setUser(JSON.parse(userLogged));
-    console.log(user.name);
-  }, []);
+  const count = localStorage.getItem("count");
+  const user = JSON.parse(localStorage.getItem("user"));
 
   return (
     <div className="displayNavbarOnBigScreen">
@@ -70,8 +66,9 @@ function NavbarOnBigScreen() {
               <p>User: {user.name}</p>
             </span>
           </Popup>
-          <a href="/order" className="text-decoration-none text-dark">
+          <a href="/order" className="text-decoration-none text-dark shop">
             <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+            <p className="notification">{count}</p>
           </a>
         </div>
       </div>

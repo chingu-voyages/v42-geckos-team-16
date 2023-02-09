@@ -6,6 +6,7 @@
 .displayNavbarOnBigScreen {
   display: none;
 }
+
 .navbar-container {
   padding: 20px;
   margin-bottom: -10px;
@@ -14,21 +15,41 @@
 .iconsBTN {
   width: 150px;
 }
-i{
+
+i {
   text-decoration: none;
 }
+
 .iconBTN {
   cursor: pointer;
 }
+
 .link-color {
   color: black;
 }
 
+.shop {
+  position: relative;
+}
+
+.notification {
+  position: absolute;
+  top: -5px;
+  left: 15px;
+  background-color: red;
+  border-radius: 50%;
+  width: 20px;
+  height: 20px;
+  text-align: center;
+}
+
 @media (min-width: 768px) {
+
   /* heddin the mobile nav bar on big screen  */
   .hidden {
     display: none;
   }
+
   /* Display navbar on big screen */
   .displayNavbarOnBigScreen {
     display: inline;

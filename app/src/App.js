@@ -19,7 +19,7 @@ function App() {
 
       <Router>
         <Toaster />
-        <Routes>
+        <Routes basename="/v42-geckos-team-16">
           <Route path="/" element={<TestHome />} />
           <Route path="/home" element={<Home />} />
           <Route path="/login" element={<Login />} />

@@ -1,6 +1,16 @@
+import { useCookies } from "react-cookie";
+import { toast } from "react-hot-toast";
+import { BiLogIn } from "react-icons/bi";
+import { MdLogout } from "react-icons/md";
+import { useNavigate } from "react-router-dom";
 import "./navbar.css";
 // navbar on small screen
 function NavbarSmallScreen() {
+    const [cookies, setCookie, removeCookie] = useCookies(["role"]);
+    const navigate = useNavigate();
+
+    let role = cookies.role ? cookies.role : "client";
+
     // nav Items
     const navItems = [
         {
@@ -46,7 +56,29 @@ function NavbarSmallScreen() {
                     <h3>Premium Team</h3>
                 </a>
                 <div className="d-flex justify-content-between align-items-center w-25 max-width">
-                    <i className="ri-book-3-line fs-5"></i>
+                    {localStorage.getItem("token") ? (
+                        <button
+                            className="btn__icon fs-5"
+                            onClick={() => {
+                                localStorage.removeItem("token");
+                                removeCookie("role");
+                                toast.success("Logout success");
+                                window.location.reload();
+                            }}
+                        >
+                            <MdLogout />
+                        </button>
+                    ) : (
+                        <button
+                            className="btn__icon fs-5"
+                            onClick={(e) => {
+                                e.preventDefault();
+                                navigate("/login");
+                            }}
+                        >
+                            <BiLogIn />
+                        </button>
+                    )}
                     <i className="ri-user-line fs-5"></i>
                     <i className="ri-shopping-bag-line fs-5"></i>
                     <button

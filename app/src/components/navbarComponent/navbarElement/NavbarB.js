@@ -6,6 +6,7 @@ import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
 import { BiLogOut, BiLogIn } from "react-icons/bi";
 import { MdLogout } from "react-icons/md";
+import { toast } from "react-hot-toast";
 
 function NavbarOnBigScreen() {
     const [cookies, setCookie, removeCookie] = useCookies(["role"]);
@@ -96,6 +97,7 @@ function NavbarOnBigScreen() {
                             onClick={() => {
                                 localStorage.removeItem("token");
                                 removeCookie("role");
+                                toast.success("Logout success");
                                 window.location.reload();
                             }}
                         >

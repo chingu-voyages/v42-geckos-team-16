@@ -71,6 +71,9 @@ function NavbarOnBigScreen() {
             closeOnDocumentClick
           >
             <span>
+              <p>
+              </p>
+              <img width="100%" height="50%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/480px-Crystal_Clear_kdm_user_female.svg.png"  />
               <p>Status: {data.status}</p>
             </span>
           </Popup>

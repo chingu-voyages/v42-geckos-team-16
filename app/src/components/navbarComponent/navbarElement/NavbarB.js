@@ -1,8 +1,8 @@
 import "./navbar.css";
 import { BASE_URL } from "../../../constants/urls";
 import axios from "axios";
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import { useEffect, useState } from "react";
 // Navbar on Big Screen
 import React from "react";
@@ -28,7 +28,6 @@ function NavbarOnBigScreen() {
     {
       name: "Add products",
       pageLink: "/add_products",
-
     },
   ];
 
@@ -45,15 +44,13 @@ function NavbarOnBigScreen() {
       </li>
     );
   });
-  const [data, setData] = useState([""])
+  const [user, setUser] = useState({});
+
   useEffect(() => {
-    const fetchUserInfo = async () => {
-      const data = await axios.get(`${BASE_URL}/users`);
-      setData(data.data);
-      console.log(data.data);
-    };
-    fetchUserInfo();
-  }, [])
+    const userLogged = localStorage.getItem("user");
+    setUser(JSON.parse(userLogged));
+    console.log(user.name);
+  }, []);
 
   return (
     <div className="displayNavbarOnBigScreen">
@@ -62,21 +59,18 @@ function NavbarOnBigScreen() {
           <h1>Premium Team</h1>
         </div>
         <div className="d-flex justify-content-between align-items-center iconsBTN">
-           <a href="#" className="text-decoration-none text-dark">
+          <a href="#" className="text-decoration-none text-dark">
             <i className="ri-book-3-line fs-5 iconBTN"></i>
           </a>
           <Popup
-            trigger={open => (
-              <i className="ri-user-line fs-5 iconBTN">
-              </i>
-            )}
+            trigger={(open) => <i className="ri-user-line fs-5 iconBTN"></i>}
             closeOnDocumentClick
           >
             <span>
-              <p>Status: {data.status}</p>
+              <p>User: {user.name}</p>
             </span>
           </Popup>
-           <a href="/order" className="text-decoration-none text-dark">
+          <a href="/order" className="text-decoration-none text-dark">
             <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
           </a>
         </div>

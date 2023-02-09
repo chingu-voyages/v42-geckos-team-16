@@ -14,6 +14,9 @@
 .iconsBTN {
   width: 150px;
 }
+i{
+  text-decoration: none;
+}
 .iconBTN {
   cursor: pointer;
 }

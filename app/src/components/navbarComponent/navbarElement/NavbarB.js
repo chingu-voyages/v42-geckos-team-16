@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // Navbar on Big Screen
 import React from "react";
 
-function NavbarOnBigScreen() {
+function NavbarOnBigScreen({userLogged}) {
   const navItems = [
     {
       name: "Home",
@@ -45,15 +45,18 @@ function NavbarOnBigScreen() {
       </li>
     );
   });
-  const [data, setData] = useState([""])
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      const data = await axios.get(`${BASE_URL}/users`);
-      setData(data.data);
-      console.log(data.data);
-    };
-    fetchUserInfo();
-  }, [])
+  //For future use - change endpoint if API changed. if not, keep on using LocalStorage instead:
+
+  // const [data, setData] = useState("")
+
+  // useEffect(() => {
+  //   const fetchUserInfo = async () => {
+  //     const data = await axios.get(`${BASE_URL}/users`);
+  //     setData(data.data);
+  //     console.log(data.data);
+  //   };
+  //   fetchUserInfo();
+  // }, [])
 
   return (
     <div className="displayNavbarOnBigScreen">
@@ -73,7 +76,9 @@ function NavbarOnBigScreen() {
             closeOnDocumentClick
           >
             <span>
-              <p>Status: {data.status}</p>
+              {/* Future use : */}
+              <h2>{userLogged}</h2>
+              <img width="100%" height="50%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/480px-Crystal_Clear_kdm_user_female.svg.png"  />
             </span>
           </Popup>
            <a href="/order" className="text-decoration-none text-dark">

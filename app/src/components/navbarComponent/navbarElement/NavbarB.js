@@ -45,15 +45,18 @@ function NavbarOnBigScreen({userLogged}) {
       </li>
     );
   });
-  const [data, setData] = useState([""])
-  useEffect(() => {
-    const fetchUserInfo = async () => {
-      const data = await axios.get(`${BASE_URL}/users`);
-      setData(data.data);
-      console.log(data.data);
-    };
-    fetchUserInfo();
-  }, [])
+  //For future use - change endpoint if API changed. if not, keep on using LocalStorage instead:
+
+  // const [data, setData] = useState("")
+
+  // useEffect(() => {
+  //   const fetchUserInfo = async () => {
+  //     const data = await axios.get(`${BASE_URL}/users`);
+  //     setData(data.data);
+  //     console.log(data.data);
+  //   };
+  //   fetchUserInfo();
+  // }, [])
 
   return (
     <div className="displayNavbarOnBigScreen">
@@ -73,9 +76,9 @@ function NavbarOnBigScreen({userLogged}) {
             closeOnDocumentClick
           >
             <span>
+              {/* Future use : */}
               <h2>{userLogged}</h2>
               <img width="100%" height="50%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/480px-Crystal_Clear_kdm_user_female.svg.png"  />
-              <h6>{data.status}</h6>
             </span>
           </Popup>
            <a href="/order" className="text-decoration-none text-dark">

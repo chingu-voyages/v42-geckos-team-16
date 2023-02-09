@@ -1,8 +1,8 @@
 import "./navbar.css";
 import { BASE_URL } from "../../../constants/urls";
 import axios from "axios";
-import Popup from 'reactjs-popup';
-import 'reactjs-popup/dist/index.css';
+import Popup from "reactjs-popup";
+import "reactjs-popup/dist/index.css";
 import { useEffect, useState } from "react";
 // Navbar on Big Screen
 import React from "react";
@@ -11,6 +11,7 @@ import { useCookies } from "react-cookie";
 import { BiLogOut, BiLogIn } from "react-icons/bi";
 import { MdLogout } from "react-icons/md";
 import { toast } from "react-hot-toast";
+
 
 function NavbarOnBigScreen() {
     const [cookies, setCookie, removeCookie] = useCookies(["role"]);
@@ -129,18 +130,25 @@ function NavbarOnBigScreen() {
                         </button>
                     )} <Popup
             trigger={open => (
-              <a href="#" className="text-decoration-none text-dark">
+              
+          <a href="#" className="text-decoration-none text-dark">
             <i className="ri-book-3-line fs-5 iconBTN"></i>
           </a>
-            )}
-            closeOnDocumentClick
+         
+
+             <Popup
+            trigger={(open) => <i className="ri-user-line fs-5 iconBTN"></i>}closeOnDocumentClick
           >
             <span>
-              <p>Status: {data.status}</p>
+              <p>User: {user.name}</p>
+
             </span>
           </Popup>
-                      <a href="/order" className="text-decoration-none text-dark">
+
+          <a href="/order" className="text-decoration-none text-dark shop">
+
             <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+            <p className="notification">{count}</p>
           </a>
                 </div>
             </div>

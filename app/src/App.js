@@ -12,26 +12,29 @@ import AboutUs from "./components/AboutUs/AboutUs";
 import TestHome from "./components/Home/TestHome/TestHome";
 
 function App() {
-    return (
-        <>
-            <Router>
-                <Header />
-                <Toaster />
-                <Routes>
-                    <Route path="/" element={<TestHome />} />
-                    <Route path="/home" element={<TestHome />} />
-                    <Route path="/login" element={<Login />} />
-                    <Route path="/register" element={<Register />} />
-                    <Route path="/products" element={<Products />} />
-                    <Route path="/products/:id" element={<ProductDetails />} />
-                    <Route path="/about" element={<AboutUs />} />
-                    <Route path="/order" element={<Cart />} />
-                    <Route path="/admin" element={<Admin />} />
-                    <Route path="*" element={<NotFound />}></Route>
-                </Routes>
-            </Router>
-        </>
-    );
+
+  return (
+    <>
+      <Header />
+
+      <Router>
+        <Toaster />
+        <Routes basename="/v42-geckos-team-16">
+          <Route path="/" element={<TestHome />} />
+          <Route path="/home" element={<Home />} />
+          <Route path="/login" element={<Login />} />
+          <Route path="/register" element={<Register />} />
+          <Route path="/about" element={<AboutUs />} />
+          <Route path="/products" element={<Products />} />
+          <Route path="/products/:id" element={<ProductDetails />} />
+          <Route path="/order" element={<Cart />} />
+          <Route path="/add_products" element={<AddProductPage />} />
+          <Route path="*" element={<NotFound />}></Route>
+        </Routes>
+      </Router>
+    </>
+  );
+
 }
 
 export default App;

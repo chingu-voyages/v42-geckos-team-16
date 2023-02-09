@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // Navbar on Big Screen
 import React from "react";
 
-function NavbarOnBigScreen() {
+function NavbarOnBigScreen({userLogged}) {
   const navItems = [
     {
       name: "Home",
@@ -64,6 +64,7 @@ function NavbarOnBigScreen() {
           >
             <span>
               <p>User: {user.name}</p>
+
             </span>
           </Popup>
           <a href="/order" className="text-decoration-none text-dark shop">

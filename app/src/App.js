@@ -1,6 +1,5 @@
 import { Toaster } from "react-hot-toast";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import { Home } from "./components/Home/Home";
 import { Login } from "./components/Login/Login";
 import Header from "./components/navbarComponent/Header";
 import ProductDetails from "./components/ProductDetails/ProductDetails";
@@ -8,11 +7,12 @@ import { Register } from "./components/Register/Register";
 import { Products } from "./components/Products/Products";
 import { NotFound } from "./components/NotFound/NotFound";
 import { Cart } from "./components/Cart/Cart";
-import AddProductPage from "./components/AddProductPage/AddProductPage";
+import Admin from "./components/Admin/Admin";
 import AboutUs from "./components/AboutUs/AboutUs";
 import TestHome from "./components/Home/TestHome/TestHome";
 
 function App() {
+
   return (
     <>
       <Header />
@@ -34,6 +34,7 @@ function App() {
       </Router>
     </>
   );
+
 }
 
 export default App;

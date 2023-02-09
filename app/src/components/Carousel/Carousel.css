@@ -56,4 +56,9 @@
     .carousel__btn {
         display: none;
     }
+
+    .carousel__image {
+        max-width: 100%;
+        height: auto;
+    }
 }

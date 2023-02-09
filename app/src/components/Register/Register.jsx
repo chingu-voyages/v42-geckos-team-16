@@ -5,11 +5,14 @@ import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { toast } from "react-hot-toast";
 import { BASE_URL } from "../../constants/urls";
-
+import { useCookies } from "react-cookie";
 
 export const Register = () => {
-    const goLoginPage = useNavigate();    
-    let [loading,setLoading] = useState(false);
+    const goLoginPage = useNavigate();
+    let [loading, setLoading] = useState(false);
+    const [registerAsAdmin, setRegisterAsAdmin] = useState(false);
+    const [cookies, setCookie] = useCookies(["role"]);
+
     let inputFields = [
         {
             name: "fullname",
@@ -68,8 +71,9 @@ export const Register = () => {
             name: user.fullname,
             email: user.email,
             password: user.password,
-            role: "client",
+            role: registerAsAdmin ? "admin" : "client",
         });
+
         setLoading(false);
         return response;
     };
@@ -77,6 +81,7 @@ export const Register = () => {
     const submitRegister = async (e) => {
         e.preventDefault();
         setFrontErrors([]);
+
         //frontend side validation
         const validateRes = validateFormDate();
 
@@ -86,7 +91,7 @@ export const Register = () => {
         } else {
             //make request to validate user from backend side then set user info and token
 
-            try{
+            try {
                 const backres = await backValidate();
                 console.log("Raw results", backres);
 
@@ -94,23 +99,24 @@ export const Register = () => {
                     let { data } = backres;
                     console.log("Status 201", backres);
                     toast.success("Register Success");
+                    registerAsAdmin &&
+                        setCookie("role", "admin", { path: "/" });
                     //setToken(data.token);
                     //localStorage.setItem("token", data.token);
                     //setUserData();
                     goLoginPage("/login");
                 }
-                }catch(error){
-                    console.log(Object.keys(error), error.response.data.msg);
-                    setBackErrors(error.response.data.msg);
-                    setLoading(false);
-                }
-            
+            } catch (error) {
+                console.log(Object.keys(error), error.response.data.msg);
+                setBackErrors(error.response.data.msg);
+                setLoading(false);
+            }
         }
     };
     return (
         <>
             <div className="vh-100">
-                <div className="m-5 row justify-content-center ">
+                <div className="m-5 row justify-content-center">
                     <div className="col-md-6">
                         <h1 className="fs-2 fw-bold text-center my-5">
                             Register
@@ -125,7 +131,13 @@ export const Register = () => {
                                 </div>
                             );
                         })}
-                        {backErrors?<div className="alert alert-danger">{backErrors}</div>:''}
+                        {backErrors ? (
+                            <div className="alert alert-danger">
+                                {backErrors}
+                            </div>
+                        ) : (
+                            ""
+                        )}
                         <form
                             className="d-flex flex-column"
                             onSubmit={submitRegister}
@@ -143,11 +155,35 @@ export const Register = () => {
                                 );
                             })}
 
-                            <button 
+                            <label htmlFor="admin">
+                                <input
+                                    id="admin"
+                                    className="mb-3 me-auto"
+                                    type="checkbox"
+                                    name="admin"
+                                    value="admin"
+                                    onChange={() => {
+                                        setRegisterAsAdmin((prev) => !prev);
+                                    }}
+                                    checked={registerAsAdmin}
+                                />
+                                <span className="ms-3">
+                                    Register as an admin
+                                </span>
+                            </label>
+
+                            <button
                                 type="submit"
                                 className="btn btn-outline-dark"
                             >
-                                 {loading?<i className="fa fa-spinner fa-spin" aria-hidden="true"></i>:'Sign Up'}
+                                {loading ? (
+                                    <i
+                                        className="fa fa-spinner fa-spin"
+                                        aria-hidden="true"
+                                    ></i>
+                                ) : (
+                                    "Sign Up"
+                                )}
                             </button>
                             <p className="text-center my-3">
                                 Already have an account ?{" "}

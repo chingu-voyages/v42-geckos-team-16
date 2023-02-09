@@ -7,7 +7,7 @@ import { useEffect, useState } from "react";
 // Navbar on Big Screen
 import React from "react";
 
-function NavbarOnBigScreen() {
+function NavbarOnBigScreen({userLogged}) {
   const navItems = [
     {
       name: "Home",
@@ -62,7 +62,9 @@ function NavbarOnBigScreen() {
           <h1>Premium Team</h1>
         </div>
         <div className="d-flex justify-content-between align-items-center iconsBTN">
-          <i className="ri-book-3-line fs-5 iconBTN"></i>
+           <a href="#" className="text-decoration-none text-dark">
+            <i className="ri-book-3-line fs-5 iconBTN"></i>
+          </a>
           <Popup
             trigger={open => (
               <i className="ri-user-line fs-5 iconBTN">
@@ -71,13 +73,14 @@ function NavbarOnBigScreen() {
             closeOnDocumentClick
           >
             <span>
-              <p>
-              </p>
+              <h2>{userLogged}</h2>
               <img width="100%" height="50%" src="https://upload.wikimedia.org/wikipedia/commons/thumb/d/d2/Crystal_Clear_kdm_user_female.svg/480px-Crystal_Clear_kdm_user_female.svg.png"  />
-              <p>Status: {data.status}</p>
+              <h6>{data.status}</h6>
             </span>
           </Popup>
-          <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+           <a href="/order" className="text-decoration-none text-dark">
+            <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+          </a>
         </div>
       </div>
       <br />

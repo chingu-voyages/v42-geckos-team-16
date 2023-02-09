@@ -1,6 +1,10 @@
 import "./navbar.css";
+import { BASE_URL } from "../../../constants/urls";
+import axios from "axios";
+import Popup from 'reactjs-popup';
+import 'reactjs-popup/dist/index.css';
+import { useEffect, useState } from "react";
 // Navbar on Big Screen
-
 import React from "react";
 import { useNavigate } from "react-router-dom";
 import { useCookies } from "react-cookie";
@@ -13,6 +17,16 @@ function NavbarOnBigScreen() {
     const navigate = useNavigate();
 
     let role = cookies.role ? cookies.role : "client";
+    
+      const [data, setData] = useState([""])
+  useEffect(() => {
+    const fetchUserInfo = async () => {
+      const data = await axios.get(`${BASE_URL}/users`);
+      setData(data.data);
+      console.log(data.data);
+    };
+    fetchUserInfo();
+  }, [])
 
     const navItems = [
         {
@@ -113,17 +127,27 @@ function NavbarOnBigScreen() {
                         >
                             <BiLogIn />
                         </button>
-                    )}
-                    <i className="ri-user-line fs-5 iconBTN"></i>
-                    <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+                    )} <Popup
+            trigger={open => (
+              <a href="#" className="text-decoration-none text-dark">
+            <i className="ri-book-3-line fs-5 iconBTN"></i>
+          </a>
+            )}
+            closeOnDocumentClick
+          >
+            <span>
+              <p>Status: {data.status}</p>
+            </span>
+          </Popup>
+                      <a href="/order" className="text-decoration-none text-dark">
+            <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+          </a>
                 </div>
             </div>
             <br />
             <ul className="nav md justify-content-center">
                 {role === "admin" ? displayNavItemsAdmin : displayNavItems}
             </ul>
-        </div>
-    );
 }
 
 export default NavbarOnBigScreen;

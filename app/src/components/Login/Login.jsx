@@ -28,34 +28,34 @@ export const Login = () => {
         },
     ];
 
-    let [user, setUser] = useState({ email: "", password: "" });
-    let [frontErrors, setFrontErrors] = useState([]);
-    let [backErrors, setBackErrors] = useState("");
-    let [token, setToken] = useState();
+  let [user, setUser] = useState({ email: "", password: "" });
+  let [frontErrors, setFrontErrors] = useState([]);
+  let [backErrors, setBackErrors] = useState("");
+  let [token, setToken] = useState();
 
-    console.log(user);
-    console.log(frontErrors);
-    const handleChange = (e) => {
-        let myuser = { ...user, [e.target.name]: e.target.value };
-        setUser(myuser);
-    };
+  console.log(user);
+  console.log(frontErrors);
+  const handleChange = (e) => {
+    let myuser = { ...user, [e.target.name]: e.target.value };
+    setUser(myuser);
+  };
 
-    //validate form data using Joi library on submit
-    const Joi = require("joi");
-    const validateFormDate = () => {
-        const schema = Joi.object({
-            email: Joi.string().email({
-                minDomainSegments: 2,
-                tlds: { allow: ["com", "net"] },
-            }),
-            password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
-        });
+  //validate form data using Joi library on submit
+  const Joi = require("joi");
+  const validateFormDate = () => {
+    const schema = Joi.object({
+      email: Joi.string().email({
+        minDomainSegments: 2,
+        tlds: { allow: ["com", "net"] },
+      }),
+      password: Joi.string().pattern(new RegExp("^[a-zA-Z0-9]{3,30}$")),
+    });
 
-        const result = schema.validate({ ...user }, { abortEarly: false });
+    const result = schema.validate({ ...user }, { abortEarly: false });
 
-        return result;
-    };
-
+    return result;
+  };
+  
     //function to validate login user from backend side
     //this data set fixed temporary till we have a better API
     const backValidate = async () => {
@@ -68,18 +68,17 @@ export const Login = () => {
         return response;
     };
 
-    const submitLogin = async (e) => {
-        e.preventDefault();
-        setFrontErrors([]);
-        //frontend side validation
-        const validateRes = validateFormDate();
+  const submitLogin = async (e) => {
+    e.preventDefault();
+    setFrontErrors([]);
+    //frontend side validation
+    const validateRes = validateFormDate();
 
-        if (validateRes.error) {
-            //set front end errors
-            setFrontErrors(validateRes.error.details);
-        } else {
-            //make request to validate user from backend side then set user info and token
-
+    if (validateRes.error) {
+      //set front end errors
+      setFrontErrors(validateRes.error.details);
+    } else {
+      //make request to validate user from backend side then set user info and token
             try {
                 const backres = await backValidate();
                 if (backres.status == 200) {
@@ -94,6 +93,7 @@ export const Login = () => {
                     console.log("data user role", data.user.role);
 
                     localStorage.setItem("token", data.token);
+                     localStorage.setItem("user", JSON.stringify(data.user));
                     toast.success("Login Success");
                     goHome("/home");
                 }
@@ -185,8 +185,5 @@ export const Login = () => {
                             </p>
                         </form>
                     </div>
-                </div>
-            </div>
-        </>
-    );
+
 };

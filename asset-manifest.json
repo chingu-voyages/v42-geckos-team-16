@@ -1,0 +1,24 @@
+{
+  "files": {
+    "main.css": "/v42-geckos-team-16/static/css/main.39db3a20.css",
+    "main.js": "/v42-geckos-team-16/static/js/main.7883de30.js",
+    "static/js/787.c1112931.chunk.js": "/v42-geckos-team-16/static/js/787.c1112931.chunk.js",
+    "static/media/login.jpg": "/v42-geckos-team-16/static/media/login.4e6710d85053c7eb58f6.jpg",
+    "static/media/fontawesome-webfont.svg?v=4.7.0": "/v42-geckos-team-16/static/media/fontawesome-webfont.c1e38fd9e0e74ba58f7a.svg",
+    "static/media/watch.jpg": "/v42-geckos-team-16/static/media/watch.666ddb989b9fd33549a6.jpg",
+    "static/media/earphone.jpg": "/v42-geckos-team-16/static/media/earphone.22c2a404d4577ee4f8ee.jpg",
+    "static/media/speaker.jpg": "/v42-geckos-team-16/static/media/speaker.b5942307adcdfd0c07f6.jpg",
+    "static/media/fontawesome-webfont.eot": "/v42-geckos-team-16/static/media/fontawesome-webfont.8b43027f47b20503057d.eot",
+    "static/media/fontawesome-webfont.ttf?v=4.7.0": "/v42-geckos-team-16/static/media/fontawesome-webfont.1e59d2330b4c6deb84b3.ttf",
+    "static/media/fontawesome-webfont.woff?v=4.7.0": "/v42-geckos-team-16/static/media/fontawesome-webfont.f691f37e57f04c152e23.woff",
+    "static/media/fontawesome-webfont.woff2?v=4.7.0": "/v42-geckos-team-16/static/media/fontawesome-webfont.20fd1704ea223900efa9.woff2",
+    "index.html": "/v42-geckos-team-16/index.html",
+    "main.39db3a20.css.map": "/v42-geckos-team-16/static/css/main.39db3a20.css.map",
+    "main.7883de30.js.map": "/v42-geckos-team-16/static/js/main.7883de30.js.map",
+    "787.c1112931.chunk.js.map": "/v42-geckos-team-16/static/js/787.c1112931.chunk.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.39db3a20.css",
+    "static/js/main.7883de30.js"
+  ]
+}

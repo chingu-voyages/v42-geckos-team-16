@@ -81,17 +81,34 @@ function NavbarOnBigScreen({ navItems }) {
         </div>
         <div className="d-flex justify-content-between align-items-center iconsBTN">
           {localStorage.getItem("token") ? (
-            <button
-              className="btn__icon fs-5"
-              onClick={() => {
-                localStorage.removeItem("token");
-                removeCookie("role");
-                toast.success("Logout success");
-                window.location.reload();
-              }}
-            >
-              <MdLogout />
-            </button>
+            <>
+              <Popup
+                trigger={(open) => (
+                  <i className="ri-user-line fs-5 iconBTN"></i>
+                )}
+                closeOnDocumentClick
+              >
+                <span>
+                  <p>User: {user.name}</p>
+                </span>
+              </Popup>
+
+              <a href="/order" className="text-decoration-none text-dark shop">
+                <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
+                <p className="notification">{count}</p>
+              </a>
+              <button
+                className="btn__icon fs-5"
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  removeCookie("role");
+                  toast.success("Logout success");
+                  window.location.reload();
+                }}
+              >
+                <MdLogout />
+              </button>
+            </>
           ) : (
             <button
               className="btn__icon fs-5"
@@ -102,20 +119,6 @@ function NavbarOnBigScreen({ navItems }) {
               <BiLogIn />
             </button>
           )}
-
-          <Popup
-            trigger={(open) => <i className="ri-user-line fs-5 iconBTN"></i>}
-            closeOnDocumentClick
-          >
-            <span>
-              <p>User: {user.name}</p>
-            </span>
-          </Popup>
-
-          <a href="/order" className="text-decoration-none text-dark shop">
-            <i className="ri-shopping-bag-line fs-5 iconBTN"></i>
-            <p className="notification">{count}</p>
-          </a>
         </div>
       </div>
       <br />

@@ -57,17 +57,32 @@ function NavbarSmallScreen() {
         </a>
         <div className="d-flex justify-content-between align-items-center w-25 max-width">
           {localStorage.getItem("token") ? (
-            <button
-              className="btn__icon fs-5"
-              onClick={() => {
-                localStorage.removeItem("token");
-                removeCookie("role");
-                toast.success("Logout success");
-                window.location.reload();
-              }}
-            >
-              <MdLogout />
-            </button>
+            <>
+              <i className="ri-user-line fs-5"></i>
+              <i className="ri-shopping-bag-line fs-5"></i>
+              <button
+                className="navbar-toggler"
+                type="button"
+                data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent"
+                aria-controls="navbarSupportedContent"
+                aria-expanded="false"
+                aria-label="Toggle navigation"
+              >
+                <i className="ri-menu-line fs-5"></i>
+              </button>
+              <button
+                className="btn__icon fs-5"
+                onClick={() => {
+                  localStorage.removeItem("token");
+                  removeCookie("role");
+                  toast.success("Logout success");
+                  window.location.reload();
+                }}
+              >
+                <MdLogout />
+              </button>
+            </>
           ) : (
             <button
               className="btn__icon fs-5"
@@ -78,19 +93,6 @@ function NavbarSmallScreen() {
               <BiLogIn />
             </button>
           )}
-          <i className="ri-user-line fs-5"></i>
-          <i className="ri-shopping-bag-line fs-5"></i>
-          <button
-            className="navbar-toggler"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent"
-            aria-expanded="false"
-            aria-label="Toggle navigation"
-          >
-            <i className="ri-menu-line fs-5"></i>
-          </button>
         </div>
 
         <div className="collapse navbar-collapse" id="navbarSupportedContent">

@@ -18,15 +18,15 @@ const ProductDetails = () => {
   const goProducts = useNavigate();
   const { id } = useParams();
   const token = localStorage.getItem("token");
+  console.log(token);
   const config = {
     headers: { Authorization: `Bearer ${token}` },
   };
 
   const OrderItem = async () => {
     const response = await axios.post(
-      `${BASE_URL}/orders/`,
+      `${BASE_URL}/orders/${id}`,
       {
-        products: id,
         quantity,
       },
       config
@@ -38,9 +38,9 @@ const ProductDetails = () => {
 
   const fetchProduct = async () => {
     setLoading(true);
-    const response = await fetch(`https://fakestoreapi.com/products/${id}`);
-    const data = await response.json();
+    const { data } = await axios.get(`${BASE_URL}/products/${id}`);
     setProduct(data);
+
     setLoading(false);
 
     console.log(data);

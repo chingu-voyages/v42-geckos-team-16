@@ -16,25 +16,19 @@ export const Cart = () => {
 
     const getOrder = async () => {
       const { data } = await axios.get(`${BASE_URL}/orders/`, config);
-      const res = data.data;
-      console.log(res);
-      localStorage.setItem("count", res.length);
-      await res.map(async (result) => {
-        const prod = await fetch(
-          `https://fakestoreapi.com/products/${result.products}`
-        );
-        const response = await prod.json();
-
-        cartItems.push({
-          id: result._id,
-          products: response,
-          quantity: result.quantity,
-        });
-      });
+      console.log(data);
+      localStorage.setItem("count", data.length);
+      const items = data.map((result) => ({
+        id: result._id,
+        products: result.products,
+        quantity: result.quantity,
+      }));
+      setCartItems(items);
     };
     getOrder();
-    console.log(cartItems[0]);
-  }, [cartItems]);
+  }, []);
+
+  console.log(cartItems[0]);
 
   return (
     <div className="p-3 p-md-4 p-lg-5 text-center font">
@@ -51,8 +45,8 @@ export const Cart = () => {
         <p>PRICE</p>
       </div>
       {cartItems.map((cart) => (
-        <div className="d-flex flex-column borderItem" key={cart.id}>
-          <div style={{ width: "35%" }}>
+        <div className="d-flex flex-row borderItem" key={cart._id}>
+          <div style={{ width: "10%" }}>
             <img
               style={{
                 width: "100%",
@@ -77,7 +71,7 @@ export const Cart = () => {
               id="quantity"
               value={Number(cart.quantity).toString()}
               onChange={(e) => setQt(Number(e.target.value))}
-              style={{ width: "30%", margin: "0px 0 0 5px" }}
+              style={{ width: "15%", margin: "0px 0 0 5px" }}
             />
           </div>
         </div>

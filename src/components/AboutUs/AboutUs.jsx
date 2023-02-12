@@ -10,44 +10,33 @@ const AboutUs = () => {
           </h1>
         </div>
         <div>
-          <h4>Our Story</h4>
+          <h4>
+            Welcome to the about us page for v42-geckos-team-16 of Chingu Voyage
+            42!
+          </h4>
           <p>
-            We're a family-owned business based out of Toronto that works
-            closely with the Harney family to offer Harney & Sons Fine Teas in
-            Canada. We wholesale and retail a large selection of teas in a
-            variety of packing options including in bulk and in beautifully
-            designed tins.
+            We are a group of aspiring web developers who have come together as
+            part of the Chingu program to further our skills and build amazing
+            projects. As beginners in the field, we are excited to take on new
+            challenges and grow as developers.
           </p>
           <p>
-            Before establishing Premium Teas, the co-founder was working for
-            world-renowned companies in the hospitality industry including the
-            Four Seasons Hotel in Chicago in 2005, learning first-hand about
-            afternoon tea service and Harney & Sons. After that, with a decade
-            of experience in the hot beverage industry, he decided to start his
-            own venture together with his wife, who has been working to ensure
-            that you have great online shopping experience.
+            Our team is composed of individuals from diverse backgrounds, but we
+            all share a common goal of becoming proficient in web development.
+            With the support of the Chingu community, we are confident that we
+            can achieve our goals and make a positive impact in the tech
+            industry.
           </p>
           <p>
-            As a result of our efforts, we're proud to share that we have served
-            thousands of happy customers since 2015 and will continue to work
-            hard and ensure that you're having a real good cuppa in your hands.
-            Cheers!
+            Together, we are working on a number of exciting projects and
+            constantly pushing ourselves to learn and improve. If you'd like to
+            follow our journey or get in touch with us, please feel free to
+            reach out!
           </p>
-        </div>
 
-        <div>
-          <h4>OUR MISSION</h4>
           <p>
-            We're extending the Harneys' mission to "offer the finest teas in
-            the world at a price that makes it an everyday luxury" by providing
-            access to a large variety of Harney & Sons Fine Teas at reasonable
-            prices with low-rate and free shipping options within Canada. We
-            also wholesale to coffee shops and cafes, bakeries, hotels, spas,
-            specialty shops and restaurants so that you can experience our
-            products even when you're having a drink outside of your home. We’ve
-            done the hard yards to bring Harney & Sons to Canada and we'd love
-            you to taste our tea selection and share our passion for these great
-            teas.
+            Thank you for visiting our about us page. We can't wait to see where
+            this journey takes us!"
           </p>
         </div>
       </div>

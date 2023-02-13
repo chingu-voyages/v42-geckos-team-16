@@ -9,6 +9,7 @@ import { NotFound } from "./components/NotFound/NotFound";
 import { Cart } from "./components/Cart/Cart";
 import Admin from "./components/Admin/Admin";
 import AboutUs from "./components/AboutUs/AboutUs";
+import ContactUs from "./components/ContactUs/ContactUs";
 import TestHome from "./components/Home/TestHome/TestHome";
 import Home from "./components/Home/Home";
 import AddProductPage from "./components/AddProductPage/AddProductPage";
@@ -17,21 +18,20 @@ function App() {
     <>
       <Header />
 
-      <Router>
-        <Toaster />
-        <Routes basename="/v42-geckos-team-16">
-          <Route path="/" element={<TestHome />} />
-          <Route path="/home" element={<TestHome />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/register" element={<Register />} />
-          <Route path="/about" element={<AboutUs />} />
-          <Route path="/products" element={<Products />} />
-          <Route path="/products/:id" element={<ProductDetails />} />
-          <Route path="/order" element={<Cart />} />
-          <Route path="/add_products" element={<AddProductPage />} />
-          <Route path="*" element={<NotFound />}></Route>
-        </Routes>
-      </Router>
+      <Toaster />
+      <Routes basename="/v42-geckos-team-16">
+        <Route path="/" element={<TestHome />} />
+        <Route path="/home" element={<TestHome />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/about" element={<AboutUs />} />
+        <Route path="/contact" element={<ContactUs />} />
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/:id" element={<ProductDetails />} />
+        <Route path="/order" element={<Cart />} />
+        <Route path="/add_products" element={<AddProductPage />} />
+        <Route path="*" element={<NotFound />}></Route>
+      </Routes>
     </>
   );
 }

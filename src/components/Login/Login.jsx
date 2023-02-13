@@ -94,6 +94,12 @@ export const Login = () => {
 
           localStorage.setItem("token", data.token);
           localStorage.setItem("user", JSON.stringify(data.user));
+          const config = {
+            headers: { Authorization: `Bearer ${data.token}` },
+          };
+          const response = await axios.get(`${BASE_URL}/orders/`, config);
+          const count = response.data.length;
+          localStorage.setItem("count", count);
           toast.success("Login Success");
           goHome("/home");
         }

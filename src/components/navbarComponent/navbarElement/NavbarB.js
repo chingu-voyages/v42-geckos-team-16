@@ -14,7 +14,11 @@ import { toast } from "react-hot-toast";
 
 function NavbarOnBigScreen({ navItems }) {
   const [cookies, setCookie, removeCookie] = useCookies(["role"]);
-  // const navigate = useNavigate();
+  const navigate = useNavigate();
+
+  function changeLocation() {
+    navigate("/login");
+  }
 
   let role = cookies.role ? cookies.role : "client";
 
@@ -33,11 +37,11 @@ function NavbarOnBigScreen({ navItems }) {
     },
     {
       name: "About Us",
-      pageLink: "about",
+      pageLink: "/about",
     },
     {
       name: "Contact Us",
-      pageLink: "#",
+      pageLink: "/contact",
     },
     {
       name: "Add products",
@@ -101,6 +105,7 @@ function NavbarOnBigScreen({ navItems }) {
                 className="btn__icon fs-5"
                 onClick={() => {
                   localStorage.removeItem("token");
+                  localStorage.removeItem("count");
                   removeCookie("role");
                   toast.success("Logout success");
                   window.location.reload();
@@ -114,6 +119,8 @@ function NavbarOnBigScreen({ navItems }) {
               className="btn__icon fs-5"
               onClick={(e) => {
                 e.preventDefault();
+                console.log("login");
+                changeLocation();
               }}
             >
               <BiLogIn />

@@ -14,11 +14,11 @@ function Header() {
     },
     {
       name: "About Us",
-      pageLink: "about",
+      pageLink: "/about",
     },
     {
       name: "Contact Us",
-      pageLink: "#",
+      pageLink: "/contact",
     },
   ];
 

@@ -7,14 +7,17 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "bootstrap/dist/js/bootstrap";
 import ".././node_modules/font-awesome/css/font-awesome.min.css";
 import { CookiesProvider } from "react-cookie";
+import { BrowserRouter } from "react-router-dom";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
-    <React.StrictMode>
-        <CookiesProvider>
-            <App />
-        </CookiesProvider>
-    </React.StrictMode>
+  <React.StrictMode>
+    <BrowserRouter>
+      <CookiesProvider>
+        <App />
+      </CookiesProvider>
+    </BrowserRouter>
+  </React.StrictMode>
 );
 
 // If you want to start measuring performance in your app, pass a function

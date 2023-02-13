@@ -8,9 +8,9 @@ const ContactUs = () => {
       description: "something about me",
       image:
         "https://res.cloudinary.com/dameucg7x/image/upload/v1676284449/329938388_1121969545144233_555012502169889047_n_llqpjc.jpg",
-      github: "github",
-      linkedin: "linkedin",
-      twitter: "twitter",
+      github: "https://github.com/Egnoel",
+      linkedin: "https://www.linkedin.com/in/egnoel-neto/",
+      twitter: "https://twitter.com/Egnoel_Neto",
     },
     {
       name: "Name",
@@ -72,9 +72,9 @@ const ContactUs = () => {
                     Web Developer
                   </Card.Subtitle>
                   <Card.Text>{contact.description}</Card.Text>
-                  <Card.Link href="#">{contact.github}</Card.Link>
-                  <Card.Link href="#">{contact.linkedin}</Card.Link>
-                  <Card.Link href="#">{contact.twitter}</Card.Link>
+                  <Card.Link href={contact.github}>Github</Card.Link>
+                  <Card.Link href={contact.linkedin}>Linkedin</Card.Link>
+                  <Card.Link href={contact.twitter}>Twitter</Card.Link>
                 </Card.Body>
               </Card>
             ))}

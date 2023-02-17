@@ -19,19 +19,19 @@ function NavbarSmallScreen() {
     },
     {
       name: "Products",
-      pageLink: "/products",
+      pageLink: "/v42-geckos-team-16/products",
     },
     {
       name: "About Us",
-      pageLink: "about",
+      pageLink: "/v42-geckos-team-16/about",
     },
     {
       name: "Contact Us",
-      pageLink: "#",
+      pageLink: "/v42-geckos-team-16/contact",
     },
     {
       name: "Add products",
-      pageLink: "/admin",
+      pageLink: "/v42-geckos-team-16/admin",
     },
   ];
 

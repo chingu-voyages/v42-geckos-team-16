@@ -2,14 +2,16 @@ import React, { useState, useEffect } from "react";
 import "./cart.css";
 import axios from "axios";
 import { BASE_URL } from "../../constants/urls";
+import { useCookies } from "react-cookie";
 
 export const Cart = () => {
   const [user, setUser] = useState([]);
   const [qt, setQt] = useState();
   const [cartItems, setCartItems] = useState([]);
+  const [cookies, setCookie] = useCookies(["role", "token", "user", "count"]);
 
   useEffect(() => {
-    const token = localStorage.getItem("token");
+    const token = cookies.token;
     const config = {
       headers: { Authorization: `Bearer ${token}` },
     };

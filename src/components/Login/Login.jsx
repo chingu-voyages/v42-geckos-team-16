@@ -11,7 +11,7 @@ export const Login = () => {
   const goHome = useNavigate();
   let [loading, setLoading] = useState(false);
   const [loginAsAdmin, setLoginAsAdmin] = useState(false);
-  const [cookies, setCookie] = useCookies(["role"]);
+  const [cookies, setCookie] = useCookies(["role", "token", "user", "count"]);
 
   let inputFields = [
     {
@@ -31,7 +31,6 @@ export const Login = () => {
   let [user, setUser] = useState({ email: "", password: "" });
   let [frontErrors, setFrontErrors] = useState([]);
   let [backErrors, setBackErrors] = useState("");
-  let [token, setToken] = useState();
 
   console.log(user);
   console.log(frontErrors);
@@ -81,25 +80,24 @@ export const Login = () => {
       //make request to validate user from backend side then set user info and token
       try {
         const backres = await backValidate();
-        if (backres.status == 200) {
+        if (backres.status === 200) {
           let { data } = backres;
 
-          setToken(data.token);
           //setRole(data.user.role);
 
           data.user.role === "admin" &&
             setCookie("role", "admin", { path: "/" });
-
+          console.log(data.token);
           console.log("data user role", data.user.role);
+          setCookie("token", data.token, { path: "/" });
+          setCookie("user", data.user, { path: "/" });
 
-          localStorage.setItem("token", data.token);
-          localStorage.setItem("user", JSON.stringify(data.user));
           const config = {
             headers: { Authorization: `Bearer ${data.token}` },
           };
           const response = await axios.get(`${BASE_URL}/orders/`, config);
           const count = response.data.length;
-          localStorage.setItem("count", count);
+          setCookie("count", count, { path: "/" });
           toast.success("Login Success");
           goHome("/home");
         }

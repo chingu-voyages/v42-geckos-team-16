@@ -21,7 +21,7 @@ export const NotFound = () => {
               <Typography variant="h6">
                 The page you’re looking for doesn’t exist.
               </Typography>
-              <Link to="/home" className="btn btn-dark mt-3">
+              <Link to="/v42-geckos-team-16/home" className="btn btn-dark mt-3">
                 Back Home
               </Link>
             </Grid>

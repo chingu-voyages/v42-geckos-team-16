@@ -13,26 +13,26 @@ const ContactUs = () => {
       twitter: "https://twitter.com/Egnoel_Neto",
     },
     {
-      name: "Name",
+      name: "Ianel",
       description: "something about me",
-      image: "http://",
-      github: "github",
+      image: "https://avatars.githubusercontent.com/u/48760301?v=4",
+      github: "https://github.com/Ianel",
       linkedin: "linkedin",
       twitter: "twitter",
     },
     {
-      name: "Name",
+      name: "Or Degani",
       description: "something about me",
-      image: "http://",
-      github: "github",
+      image: "https://avatars.githubusercontent.com/u/77922002?v=4",
+      github: "https://github.com/ordegani",
       linkedin: "linkedin",
       twitter: "twitter",
     },
     {
-      name: "Name",
+      name: "Saleh Hadi Aburah",
       description: "something about me",
-      image: "http://",
-      github: "github",
+      image: "https://avatars.githubusercontent.com/u/110779753?v=4",
+      github: "https://github.com/salehHadi",
       linkedin: "linkedin",
       twitter: "twitter",
     },
@@ -71,7 +71,7 @@ const ContactUs = () => {
                   <Card.Subtitle className="mb-2 text-muted">
                     Web Developer
                   </Card.Subtitle>
-                  <Card.Text>{contact.description}</Card.Text>
+                  <br />
                   <Card.Link href={contact.github}>Github</Card.Link>
                   <Card.Link href={contact.linkedin}>Linkedin</Card.Link>
                   <Card.Link href={contact.twitter}>Twitter</Card.Link>
@@ -89,7 +89,7 @@ const ContactUs = () => {
 
           <p>
             Thank you for visiting our about us page. We can't wait to see where
-            this journey takes us!"
+            this journey takes us!
           </p>
         </div>
       </div>

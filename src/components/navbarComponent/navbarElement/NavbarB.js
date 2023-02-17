@@ -99,6 +99,7 @@ function NavbarOnBigScreen({ navItems }) {
               >
                 <span>
                   <p>User: {user.name}</p>
+                  <img src="https://media.istockphoto.com/id/1354434366/photo/cheerful-woman-gardener-making-video-call-on-a-digital-tablet-in-her-flower-shop.jpg?s=612x612&w=is&k=20&c=2WE_31SX6MTl1Zrw0hCSOtXCj-pq9NwetW3gQ_Sh9Z4=" width="100%"></img>
                 </span>
               </Popup>
 
@@ -124,17 +125,17 @@ function NavbarOnBigScreen({ navItems }) {
               </button>
             </>
           ) : (
-            <button
-              className="btn__icon fs-5"
-              onClick={(e) => {
-                e.preventDefault();
-                console.log("login");
-                changeLocation();
-              }}
-            >
-              <BiLogIn />
-            </button>
-          )}
+              <button
+                className="btn__icon fs-5"
+                onClick={(e) => {
+                  e.preventDefault();
+                  console.log("login");
+                  changeLocation();
+                }}
+              >
+                <BiLogIn />
+              </button>
+            )}
         </div>
       </div>
       <br />

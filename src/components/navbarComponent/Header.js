@@ -6,19 +6,19 @@ function Header() {
   const navItems = [
     {
       name: "Home",
-      pageLink: "/",
+      pageLink: "/v42-geckos-team-16/home",
     },
     {
       name: "Products",
-      pageLink: "/products",
+      pageLink: "/v42-geckos-team-16/products",
     },
     {
       name: "About Us",
-      pageLink: "/about",
+      pageLink: "/v42-geckos-team-16/about",
     },
     {
       name: "Contact Us",
-      pageLink: "/contact",
+      pageLink: "/v42-geckos-team-16/contact",
     },
   ];
 

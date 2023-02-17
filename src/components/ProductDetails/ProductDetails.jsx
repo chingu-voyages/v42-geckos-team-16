@@ -17,20 +17,11 @@ const ProductDetails = () => {
   const [loading, setLoading] = useState(false);
   const goProducts = useNavigate();
   const { id } = useParams();
-  const token = localStorage.getItem("token");
-  console.log(token);
-  const config = {
-    headers: { Authorization: `Bearer ${token}` },
-  };
 
   const OrderItem = async () => {
-    const response = await axios.post(
-      `${BASE_URL}/orders/${id}`,
-      {
-        quantity,
-      },
-      config
-    );
+    const response = await axios.post(`${BASE_URL}/orders/${id}`, {
+      quantity,
+    });
     console.log(response);
     toast.success("Added to cart, continue shopping...");
     goProducts("/products");

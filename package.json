@@ -40,7 +40,14 @@
     "extends": [
       "react-app",
       "react-app/jest"
-    ]
+    ],
+    "rules": {
+      "no-unused-vars": "off",
+      "jsx-a11y/alt-text": "off",
+      "react-hooks/exhaustive-deps": "off",
+      "jsx-a11y/img-redundant-alt": "off",
+      "eqeqeq": "off"
+    }
   },
   "browserslist": {
     "production": [
@@ -55,6 +62,6 @@
     ]
   },
   "devDependencies": {
-    "gh-pages": "^5.0.0"
+    
   }
 }

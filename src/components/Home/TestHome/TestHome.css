@@ -14,7 +14,7 @@ html {
     height: 75vh;
     display: flex;
     flex-direction: row;
-    justify-content: start;
+    justify-content: flex-start;
     align-items: stretch;
     overflow: hidden;
     position: relative;

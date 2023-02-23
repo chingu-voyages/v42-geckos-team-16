@@ -1,0 +1,29 @@
+name: v42-geckos-team-16
+id: 7bf10fd5-c505-4e8d-8ae8-bf033f9ad308
+language: JavaScript
+extensions:
+  - .js
+  - ._js
+  - .bones
+  - .cjs
+  - .es
+  - .es6
+  - .frag
+  - .gs
+  - .jake
+  - .javascript
+  - .jsb
+  - .jscad
+  - .jsfl
+  - .jslib
+  - .jsm
+  - .jspre
+  - .jss
+  - .jsx
+  - .mjs
+  - .njs
+  - .pac
+  - .sjs
+  - .ssjs
+  - .xsjs
+  - .xsjslib
